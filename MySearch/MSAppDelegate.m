@@ -6,13 +6,13 @@
 //  Copyright © 2015 Alexander Sviridov. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "MSAppDelegate.h"
 
-@interface AppDelegate ()
+@interface MSAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation MSAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		B640C4A51C084B650042EFE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4A41C084B650042EFE6 /* main.m */; };
-		B640C4A81C084B650042EFE6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4A71C084B650042EFE6 /* AppDelegate.m */; };
-		B640C4AB1C084B650042EFE6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4AA1C084B650042EFE6 /* ViewController.m */; };
+		B640C4A81C084B650042EFE6 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4A71C084B650042EFE6 /* MSAppDelegate.m */; };
 		B640C4AE1C084B650042EFE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B640C4AC1C084B650042EFE6 /* Main.storyboard */; };
 		B640C4B01C084B650042EFE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B640C4AF1C084B650042EFE6 /* Assets.xcassets */; };
 		B640C4B31C084B650042EFE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B640C4B11C084B650042EFE6 /* LaunchScreen.storyboard */; };
 		B640C4BE1C084B650042EFE6 /* MySearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4BD1C084B650042EFE6 /* MySearchTests.m */; };
 		B640C4C91C084B650042EFE6 /* MySearchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4C81C084B650042EFE6 /* MySearchUITests.m */; };
+		B640C4D91C084D540042EFE6 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4D81C084D540042EFE6 /* MSViewController.m */; };
+		B640C4DE1C084DC60042EFE6 /* MSGithubNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4DD1C084DC60042EFE6 /* MSGithubNetworkManager.m */; };
+		B640C4E11C084DD70042EFE6 /* MSiTunesNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4E01C084DD70042EFE6 /* MSiTunesNetworkManager.m */; };
+		B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4E51C085E460042EFE6 /* MSSerializationManager.m */; };
+		B640C4E91C085FB80042EFE6 /* MSGithubSearchResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4E81C085FB80042EFE6 /* MSGithubSearchResultContainer.m */; };
+		B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4EC1C0864270042EFE6 /* NSArray+MSLinqExtension.m */; };
+		B640C4F01C087C1B0042EFE6 /* MSSerializationValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4EF1C087C1B0042EFE6 /* MSSerializationValueTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +43,8 @@
 /* Begin PBXFileReference section */
 		B640C4A01C084B650042EFE6 /* MySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B640C4A41C084B650042EFE6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B640C4A61C084B650042EFE6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B640C4A71C084B650042EFE6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B640C4A91C084B650042EFE6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B640C4AA1C084B650042EFE6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B640C4A61C084B650042EFE6 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
+		B640C4A71C084B650042EFE6 /* MSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSAppDelegate.m; sourceTree = "<group>"; };
 		B640C4AD1C084B650042EFE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B640C4AF1C084B650042EFE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B640C4B21C084B650042EFE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +55,21 @@
 		B640C4C41C084B650042EFE6 /* MySearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B640C4C81C084B650042EFE6 /* MySearchUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySearchUITests.m; sourceTree = "<group>"; };
 		B640C4CA1C084B650042EFE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B640C4D71C084D540042EFE6 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
+		B640C4D81C084D540042EFE6 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
+		B640C4DC1C084DC60042EFE6 /* MSGithubNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGithubNetworkManager.h; sourceTree = "<group>"; };
+		B640C4DD1C084DC60042EFE6 /* MSGithubNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGithubNetworkManager.m; sourceTree = "<group>"; };
+		B640C4DF1C084DD70042EFE6 /* MSiTunesNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiTunesNetworkManager.h; sourceTree = "<group>"; };
+		B640C4E01C084DD70042EFE6 /* MSiTunesNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSiTunesNetworkManager.m; sourceTree = "<group>"; };
+		B640C4E21C084DED0042EFE6 /* MSNetworkManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNetworkManagerProtocol.h; sourceTree = "<group>"; };
+		B640C4E41C085E460042EFE6 /* MSSerializationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSerializationManager.h; sourceTree = "<group>"; };
+		B640C4E51C085E460042EFE6 /* MSSerializationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSerializationManager.m; sourceTree = "<group>"; };
+		B640C4E71C085FB80042EFE6 /* MSGithubSearchResultContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGithubSearchResultContainer.h; sourceTree = "<group>"; };
+		B640C4E81C085FB80042EFE6 /* MSGithubSearchResultContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGithubSearchResultContainer.m; sourceTree = "<group>"; };
+		B640C4EB1C0864270042EFE6 /* NSArray+MSLinqExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MSLinqExtension.h"; sourceTree = "<group>"; };
+		B640C4EC1C0864270042EFE6 /* NSArray+MSLinqExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MSLinqExtension.m"; sourceTree = "<group>"; };
+		B640C4EE1C087C1B0042EFE6 /* MSSerializationValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSerializationValueTransformer.h; sourceTree = "<group>"; };
+		B640C4EF1C087C1B0042EFE6 /* MSSerializationValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSerializationValueTransformer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +120,12 @@
 		B640C4A21C084B650042EFE6 /* MySearch */ = {
 			isa = PBXGroup;
 			children = (
-				B640C4A61C084B650042EFE6 /* AppDelegate.h */,
-				B640C4A71C084B650042EFE6 /* AppDelegate.m */,
-				B640C4A91C084B650042EFE6 /* ViewController.h */,
-				B640C4AA1C084B650042EFE6 /* ViewController.m */,
+				B640C4EA1C0863FD0042EFE6 /* Helpers */,
+				B640C4DA1C084D7B0042EFE6 /* Model */,
+				B640C4DB1C084D7B0042EFE6 /* View */,
+				B640C4D61C084D440042EFE6 /* Controller */,
+				B640C4A61C084B650042EFE6 /* MSAppDelegate.h */,
+				B640C4A71C084B650042EFE6 /* MSAppDelegate.m */,
 				B640C4AC1C084B650042EFE6 /* Main.storyboard */,
 				B640C4AF1C084B650042EFE6 /* Assets.xcassets */,
 				B640C4B11C084B650042EFE6 /* LaunchScreen.storyboard */,
@@ -138,6 +159,57 @@
 				B640C4CA1C084B650042EFE6 /* Info.plist */,
 			);
 			path = MySearchUITests;
+			sourceTree = "<group>";
+		};
+		B640C4D61C084D440042EFE6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B640C4D71C084D540042EFE6 /* MSViewController.h */,
+				B640C4D81C084D540042EFE6 /* MSViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B640C4DA1C084D7B0042EFE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B640C4E31C085E050042EFE6 /* Serialization */,
+				B640C4E21C084DED0042EFE6 /* MSNetworkManagerProtocol.h */,
+				B640C4DC1C084DC60042EFE6 /* MSGithubNetworkManager.h */,
+				B640C4DD1C084DC60042EFE6 /* MSGithubNetworkManager.m */,
+				B640C4DF1C084DD70042EFE6 /* MSiTunesNetworkManager.h */,
+				B640C4E01C084DD70042EFE6 /* MSiTunesNetworkManager.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B640C4DB1C084D7B0042EFE6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B640C4E31C085E050042EFE6 /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				B640C4EE1C087C1B0042EFE6 /* MSSerializationValueTransformer.h */,
+				B640C4EF1C087C1B0042EFE6 /* MSSerializationValueTransformer.m */,
+				B640C4E41C085E460042EFE6 /* MSSerializationManager.h */,
+				B640C4E51C085E460042EFE6 /* MSSerializationManager.m */,
+				B640C4E71C085FB80042EFE6 /* MSGithubSearchResultContainer.h */,
+				B640C4E81C085FB80042EFE6 /* MSGithubSearchResultContainer.m */,
+			);
+			path = Serialization;
+			sourceTree = "<group>";
+		};
+		B640C4EA1C0863FD0042EFE6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B640C4EB1C0864270042EFE6 /* NSArray+MSLinqExtension.h */,
+				B640C4EC1C0864270042EFE6 /* NSArray+MSLinqExtension.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +274,7 @@
 		B640C4981C084B650042EFE6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = MS;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Alexander Sviridov";
 				TargetAttributes = {
@@ -270,9 +343,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B640C4AB1C084B650042EFE6 /* ViewController.m in Sources */,
-				B640C4A81C084B650042EFE6 /* AppDelegate.m in Sources */,
+				B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */,
+				B640C4E91C085FB80042EFE6 /* MSGithubSearchResultContainer.m in Sources */,
+				B640C4A81C084B650042EFE6 /* MSAppDelegate.m in Sources */,
+				B640C4D91C084D540042EFE6 /* MSViewController.m in Sources */,
+				B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */,
 				B640C4A51C084B650042EFE6 /* main.m in Sources */,
+				B640C4E11C084DD70042EFE6 /* MSiTunesNetworkManager.m in Sources */,
+				B640C4F01C087C1B0042EFE6 /* MSSerializationValueTransformer.m in Sources */,
+				B640C4DE1C084DC60042EFE6 /* MSGithubNetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
