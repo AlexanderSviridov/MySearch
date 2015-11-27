@@ -9,18 +9,21 @@
 #import <Foundation/Foundation.h>
 
 #import "MSSerializationManager.h"
+#import "MSSearchResultCellViewModel.h"
+
+@class MSGithubOwnerContainer;
 
 /**
  *  MSGithubSearchResultContainer
  *  Expected array responce for https://api.github.com/search/repositories request
  *  info: https://developer.github.com/v3/search/
  */
-@interface MSGithubSearchResultContainer : NSObject <MSSerializationObjectProtocol>
+@interface MSGithubSearchResultContainer : NSObject <MSSerializationObjectProtocol, MSSearchResultCellViewModel>
 
 @property NSInteger container_id;
 @property NSString *name;
 @property NSString *full_name;
-@property NSDictionary *owner;
+@property MSGithubOwnerContainer *owner;
 @property BOOL container_private;
 @property NSString *html_url;
 @property NSString *container_description;

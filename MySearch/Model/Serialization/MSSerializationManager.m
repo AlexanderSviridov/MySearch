@@ -17,6 +17,8 @@
     id result = [(Class)contrainerClass new];
     for ( NSString *mappingKey in mappingDict )
     {
+        if ( [@"owner" isEqualToString:mappingKey] )
+            NSLog(@"");
         NSString *representationKey = mappingDict[mappingKey];
         id representationValue = representation[representationKey];
         NSValueTransformer *transformer = [contrainerClass msSerializationTransformerForKey:mappingKey];
@@ -25,6 +27,7 @@
             [result setValue:representationValue forKey:mappingKey];
             continue;
         }
+        [result setValue:[transformer transformedValue:representationValue] forKey:mappingKey];
     }
     return result;
 }

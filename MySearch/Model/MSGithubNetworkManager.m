@@ -12,7 +12,12 @@
 
 @implementation MSGithubNetworkManager
 
-- (void)searchWithQuery:(NSString *)query compleationBlock:(void (^)(NSArray *))compleation
+- (void)searchRepositoriesWithQuery:(NSString *)queryString onCompleation:(void (^)())compleation
+{
+    
+}
+
+- (void)searchWithQuery:(NSString *)query compleationBlock:(void (^)(NSArray<id<MSSearchResultCellViewModel>> *))compleation
 {
     NSString *quertyString = [NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@&sort=stars&order=desc", query ];
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:quertyString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -20,7 +25,9 @@
         id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
         NSArray *items = result[@"items"];
         items = [MSSerializationManager serializedObjectFromArrayRepresentation:items class:[MSGithubSearchResultContainer class]];
-        compleation( items );
+        dispatch_async(dispatch_get_main_queue(), ^{
+            compleation( items );
+        });
     }] resume];
 }
 

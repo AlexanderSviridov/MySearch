@@ -1,5 +1,5 @@
 //
-//  MSNetworkManagerProtocol.h
+//  MSSearchResultCellProtocol.h
 //  MySearch
 //
 //  Created by Alexander Sviridov on 27/11/15.
@@ -10,8 +10,8 @@
 
 @protocol MSSearchResultCellViewModel;
 
-@protocol MSNetworkManagerProtocol <NSObject>
+@protocol MSSearchResultCellProtocol <NSObject>
 
-- (void)searchWithQuery:(NSString *)query compleationBlock:(void(^)(NSArray<id<MSSearchResultCellViewModel>> *results))compleation;
+- (void)configureCellFromModel:(id<MSSearchResultCellViewModel>)cellModel;
 
 @end

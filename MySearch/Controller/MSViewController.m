@@ -9,10 +9,13 @@
 #import "MSViewController.h"
 
 #import "MSGithubNetworkManager.h"
+#import "MSSearchResultTableView.h"
+#import "MSSearchResultCellViewModel.h"
 
 @interface MSViewController ()
 
 @property MSGithubNetworkManager *githubManager;
+@property (weak, nonatomic) IBOutlet MSSearchResultTableView *tableView;
 
 @end
 
@@ -23,8 +26,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     _githubManager = [MSGithubNetworkManager new];
-    [self.githubManager searchWithQuery:@"reactivecocoa" compleationBlock:^(NSArray *results) {
-        NSLog(@"%s %@", __PRETTY_FUNCTION__, results );
+    __weak typeof(self) weakself = self;
+    [self.githubManager searchWithQuery:@"reactivecocoa" compleationBlock:^(NSArray<id<MSSearchResultCellViewModel>> *results) {
+        weakself.tableView.cellArray = results;
     }];
 }
 

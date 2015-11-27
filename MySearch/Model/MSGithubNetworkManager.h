@@ -12,4 +12,6 @@
 
 @interface MSGithubNetworkManager : NSObject <MSNetworkManagerProtocol>
 
+- (void)searchRepositoriesWithQuery:(NSString *)queryString onCompleation:(void(^)())compleation;
+
 @end

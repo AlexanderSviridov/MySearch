@@ -8,7 +8,13 @@
 
 #import "MSGithubSearchResultContainer.h"
 
+#import "MSGithubOwnerContainer.h"
+
+#import "MSSerializationValueTransformer.h"
+
 @implementation MSGithubSearchResultContainer
+
+#pragma mark - serialization
 
 + (NSDictionary<NSString *,NSString *> *)msSerializationMapping
 {
@@ -86,7 +92,28 @@
 
 + (NSValueTransformer *)msSerializationTransformerForKey:(NSString *)key
 {
+    if ( [@"owner" isEqualToString:key] )
+    {
+        return [MSSerializationValueTransformer transformerForSerializedObjecOfClass:[MSGithubOwnerContainer class]];
+    }
     return nil;
+}
+
+#pragma mark - MSSearchResultCellViewModel
+
+- (NSString *)cellViewModelTitle
+{
+    return self.name;
+}
+
+- (NSString *)cellViewModelDetail
+{
+    return self.html_url;
+}
+
+- (NSURL *)cellViewModelImageURL
+{
+    return [NSURL URLWithString:self.owner.avatar_url];
 }
 
 @end

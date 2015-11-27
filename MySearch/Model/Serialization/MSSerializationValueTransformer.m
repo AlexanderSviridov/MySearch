@@ -9,6 +9,7 @@
 #import "MSSerializationValueTransformer.h"
 
 #import "NSArray+MSLinqExtension.h"
+#import "MSSerializationManager.h"
 
 @interface MSSerializationValueTransformer<FromType, DestinationType> ()
 
@@ -33,10 +34,10 @@
 {
     MSSerializationValueTransformer<NSDictionary *, id> *result = [self new];
     result.forwardBlock = ^id(NSDictionary *value ) {
-        return nil;
+        return [MSSerializationManager serializedObjectFromRepresentation:value class:serializedClass];
     };
     result.reverseBlock = ^id(id value ) {
-        return nil;
+        return [MSSerializationManager serializeObjectIntoRepresentationFromObject:value];
     };
     return result;
 }
@@ -45,10 +46,10 @@
 {
     MSSerializationValueTransformer<NSArray *, NSArray *> *result = [self new];
     result.forwardBlock = ^NSArray*(NSArray *value ) {
-        return nil;
+        return [MSSerializationManager serializedObjectFromArrayRepresentation:value class:serializedArrayClass];
     };
     result.reverseBlock = ^NSArray*(NSArray *value ) {
-        return nil;
+        return [MSSerializationManager serializeObjectIntoRepresentationFromObject:value];
     };
     return result;
 }

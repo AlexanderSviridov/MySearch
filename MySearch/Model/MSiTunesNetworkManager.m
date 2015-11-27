@@ -10,4 +10,9 @@
 
 @implementation MSiTunesNetworkManager
 
+- (void)searchWithQuery:(NSString *)query compleationBlock:(void (^)(NSArray<id<MSSearchResultCellViewModel>> *))compleation
+{
+    
+}
+
 @end

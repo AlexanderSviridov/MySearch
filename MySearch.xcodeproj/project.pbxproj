@@ -21,6 +21,11 @@
 		B640C4E91C085FB80042EFE6 /* MSGithubSearchResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4E81C085FB80042EFE6 /* MSGithubSearchResultContainer.m */; };
 		B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4EC1C0864270042EFE6 /* NSArray+MSLinqExtension.m */; };
 		B640C4F01C087C1B0042EFE6 /* MSSerializationValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4EF1C087C1B0042EFE6 /* MSSerializationValueTransformer.m */; };
+		B640C4F31C088D100042EFE6 /* MSGithubOwnerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4F21C088D100042EFE6 /* MSGithubOwnerContainer.m */; };
+		B640C4F61C0891EC0042EFE6 /* MSSearchResultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4F51C0891EC0042EFE6 /* MSSearchResultTableView.m */; };
+		B640C4FA1C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4F91C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m */; };
+		B640C4FD1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4FC1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m */; };
+		B640C5011C08A93E0042EFE6 /* MSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C5001C08A93E0042EFE6 /* MSImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +75,18 @@
 		B640C4EC1C0864270042EFE6 /* NSArray+MSLinqExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MSLinqExtension.m"; sourceTree = "<group>"; };
 		B640C4EE1C087C1B0042EFE6 /* MSSerializationValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSerializationValueTransformer.h; sourceTree = "<group>"; };
 		B640C4EF1C087C1B0042EFE6 /* MSSerializationValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSerializationValueTransformer.m; sourceTree = "<group>"; };
+		B640C4F11C088D100042EFE6 /* MSGithubOwnerContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGithubOwnerContainer.h; sourceTree = "<group>"; };
+		B640C4F21C088D100042EFE6 /* MSGithubOwnerContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGithubOwnerContainer.m; sourceTree = "<group>"; };
+		B640C4F41C0891EC0042EFE6 /* MSSearchResultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultTableView.h; sourceTree = "<group>"; };
+		B640C4F51C0891EC0042EFE6 /* MSSearchResultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchResultTableView.m; sourceTree = "<group>"; };
+		B640C4F71C08921E0042EFE6 /* MSSearchResultCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultCellViewModel.h; sourceTree = "<group>"; };
+		B640C4F81C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRightAlignedSearchResultTableViewCell.h; sourceTree = "<group>"; };
+		B640C4F91C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRightAlignedSearchResultTableViewCell.m; sourceTree = "<group>"; };
+		B640C4FB1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLeftAlignedSearchResultTableViewCell.h; sourceTree = "<group>"; };
+		B640C4FC1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLeftAlignedSearchResultTableViewCell.m; sourceTree = "<group>"; };
+		B640C4FE1C08A7D50042EFE6 /* MSSearchResultCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultCellProtocol.h; sourceTree = "<group>"; };
+		B640C4FF1C08A93E0042EFE6 /* MSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSImageView.h; sourceTree = "<group>"; };
+		B640C5001C08A93E0042EFE6 /* MSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +203,16 @@
 		B640C4DB1C084D7B0042EFE6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B640C4F71C08921E0042EFE6 /* MSSearchResultCellViewModel.h */,
+				B640C4F41C0891EC0042EFE6 /* MSSearchResultTableView.h */,
+				B640C4F51C0891EC0042EFE6 /* MSSearchResultTableView.m */,
+				B640C4FE1C08A7D50042EFE6 /* MSSearchResultCellProtocol.h */,
+				B640C4F81C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.h */,
+				B640C4F91C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m */,
+				B640C4FB1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.h */,
+				B640C4FC1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m */,
+				B640C4FF1C08A93E0042EFE6 /* MSImageView.h */,
+				B640C5001C08A93E0042EFE6 /* MSImageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,6 +226,8 @@
 				B640C4E51C085E460042EFE6 /* MSSerializationManager.m */,
 				B640C4E71C085FB80042EFE6 /* MSGithubSearchResultContainer.h */,
 				B640C4E81C085FB80042EFE6 /* MSGithubSearchResultContainer.m */,
+				B640C4F11C088D100042EFE6 /* MSGithubOwnerContainer.h */,
+				B640C4F21C088D100042EFE6 /* MSGithubOwnerContainer.m */,
 			);
 			path = Serialization;
 			sourceTree = "<group>";
@@ -345,12 +374,17 @@
 			files = (
 				B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */,
 				B640C4E91C085FB80042EFE6 /* MSGithubSearchResultContainer.m in Sources */,
+				B640C5011C08A93E0042EFE6 /* MSImageView.m in Sources */,
 				B640C4A81C084B650042EFE6 /* MSAppDelegate.m in Sources */,
 				B640C4D91C084D540042EFE6 /* MSViewController.m in Sources */,
+				B640C4F31C088D100042EFE6 /* MSGithubOwnerContainer.m in Sources */,
 				B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */,
+				B640C4FD1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m in Sources */,
 				B640C4A51C084B650042EFE6 /* main.m in Sources */,
 				B640C4E11C084DD70042EFE6 /* MSiTunesNetworkManager.m in Sources */,
+				B640C4F61C0891EC0042EFE6 /* MSSearchResultTableView.m in Sources */,
 				B640C4F01C087C1B0042EFE6 /* MSSerializationValueTransformer.m in Sources */,
+				B640C4FA1C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m in Sources */,
 				B640C4DE1C084DC60042EFE6 /* MSGithubNetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
