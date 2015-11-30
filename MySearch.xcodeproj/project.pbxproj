@@ -23,12 +23,13 @@
 		B640C4F01C087C1B0042EFE6 /* MSSerializationValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4EF1C087C1B0042EFE6 /* MSSerializationValueTransformer.m */; };
 		B640C4F31C088D100042EFE6 /* MSGithubOwnerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4F21C088D100042EFE6 /* MSGithubOwnerContainer.m */; };
 		B640C4F61C0891EC0042EFE6 /* MSSearchResultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4F51C0891EC0042EFE6 /* MSSearchResultTableView.m */; };
-		B640C4FA1C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4F91C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m */; };
-		B640C4FD1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4FC1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m */; };
-		B640C5011C08A93E0042EFE6 /* MSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C5001C08A93E0042EFE6 /* MSImageView.m */; };
+		B640C4FD1C08A65D0042EFE6 /* MSSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4FC1C08A65D0042EFE6 /* MSSearchResultTableViewCell.m */; };
+		B640C5011C08A93E0042EFE6 /* MSWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C5001C08A93E0042EFE6 /* MSWebImageView.m */; };
 		B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93BE1C0C4CA3007E4560 /* MSImageCacheManager.m */; };
-		B67A93C31C0C504C007E4560 /* MSPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93C21C0C504C007E4560 /* MSPromise.m */; };
+		B67A93C31C0C504C007E4560 /* _MSPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93C21C0C504C007E4560 /* _MSPromise.m */; };
 		B67A93C81C0C552E007E4560 /* MSPromiseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93C71C0C552E007E4560 /* MSPromiseTest.m */; };
+		B67A93CC1C0C79CB007E4560 /* _2MSPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93CB1C0C79CB007E4560 /* _2MSPromise.m */; };
+		B67A93CF1C0C9F58007E4560 /* MSPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93CE1C0C9F58007E4560 /* MSPromise.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,18 +84,20 @@
 		B640C4F41C0891EC0042EFE6 /* MSSearchResultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultTableView.h; sourceTree = "<group>"; };
 		B640C4F51C0891EC0042EFE6 /* MSSearchResultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchResultTableView.m; sourceTree = "<group>"; };
 		B640C4F71C08921E0042EFE6 /* MSSearchResultCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultCellViewModel.h; sourceTree = "<group>"; };
-		B640C4F81C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRightAlignedSearchResultTableViewCell.h; sourceTree = "<group>"; };
-		B640C4F91C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRightAlignedSearchResultTableViewCell.m; sourceTree = "<group>"; };
-		B640C4FB1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLeftAlignedSearchResultTableViewCell.h; sourceTree = "<group>"; };
-		B640C4FC1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLeftAlignedSearchResultTableViewCell.m; sourceTree = "<group>"; };
+		B640C4FB1C08A65D0042EFE6 /* MSSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultTableViewCell.h; sourceTree = "<group>"; };
+		B640C4FC1C08A65D0042EFE6 /* MSSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchResultTableViewCell.m; sourceTree = "<group>"; };
 		B640C4FE1C08A7D50042EFE6 /* MSSearchResultCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultCellProtocol.h; sourceTree = "<group>"; };
-		B640C4FF1C08A93E0042EFE6 /* MSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSImageView.h; sourceTree = "<group>"; };
-		B640C5001C08A93E0042EFE6 /* MSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSImageView.m; sourceTree = "<group>"; };
+		B640C4FF1C08A93E0042EFE6 /* MSWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWebImageView.h; sourceTree = "<group>"; };
+		B640C5001C08A93E0042EFE6 /* MSWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWebImageView.m; sourceTree = "<group>"; };
 		B67A93BD1C0C4CA3007E4560 /* MSImageCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSImageCacheManager.h; sourceTree = "<group>"; };
 		B67A93BE1C0C4CA3007E4560 /* MSImageCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSImageCacheManager.m; sourceTree = "<group>"; };
-		B67A93C11C0C504C007E4560 /* MSPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPromise.h; sourceTree = "<group>"; };
-		B67A93C21C0C504C007E4560 /* MSPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromise.m; sourceTree = "<group>"; };
+		B67A93C11C0C504C007E4560 /* _MSPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MSPromise.h; sourceTree = "<group>"; };
+		B67A93C21C0C504C007E4560 /* _MSPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MSPromise.m; sourceTree = "<group>"; };
 		B67A93C71C0C552E007E4560 /* MSPromiseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromiseTest.m; sourceTree = "<group>"; };
+		B67A93CA1C0C79CB007E4560 /* _2MSPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _2MSPromise.h; sourceTree = "<group>"; };
+		B67A93CB1C0C79CB007E4560 /* _2MSPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _2MSPromise.m; sourceTree = "<group>"; };
+		B67A93CD1C0C9F58007E4560 /* MSPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPromise.h; sourceTree = "<group>"; };
+		B67A93CE1C0C9F58007E4560 /* MSPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromise.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,12 +221,10 @@
 				B640C4F41C0891EC0042EFE6 /* MSSearchResultTableView.h */,
 				B640C4F51C0891EC0042EFE6 /* MSSearchResultTableView.m */,
 				B640C4FE1C08A7D50042EFE6 /* MSSearchResultCellProtocol.h */,
-				B640C4F81C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.h */,
-				B640C4F91C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m */,
-				B640C4FB1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.h */,
-				B640C4FC1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m */,
-				B640C4FF1C08A93E0042EFE6 /* MSImageView.h */,
-				B640C5001C08A93E0042EFE6 /* MSImageView.m */,
+				B640C4FB1C08A65D0042EFE6 /* MSSearchResultTableViewCell.h */,
+				B640C4FC1C08A65D0042EFE6 /* MSSearchResultTableViewCell.m */,
+				B640C4FF1C08A93E0042EFE6 /* MSWebImageView.h */,
+				B640C5001C08A93E0042EFE6 /* MSWebImageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -264,8 +265,12 @@
 		B67A93C01C0C503D007E4560 /* Promises */ = {
 			isa = PBXGroup;
 			children = (
-				B67A93C11C0C504C007E4560 /* MSPromise.h */,
-				B67A93C21C0C504C007E4560 /* MSPromise.m */,
+				B67A93C11C0C504C007E4560 /* _MSPromise.h */,
+				B67A93C21C0C504C007E4560 /* _MSPromise.m */,
+				B67A93CA1C0C79CB007E4560 /* _2MSPromise.h */,
+				B67A93CB1C0C79CB007E4560 /* _2MSPromise.m */,
+				B67A93CD1C0C9F58007E4560 /* MSPromise.h */,
+				B67A93CE1C0C9F58007E4560 /* MSPromise.m */,
 			);
 			path = Promises;
 			sourceTree = "<group>";
@@ -403,19 +408,20 @@
 			files = (
 				B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */,
 				B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */,
+				B67A93CF1C0C9F58007E4560 /* MSPromise.m in Sources */,
+				B67A93CC1C0C79CB007E4560 /* _2MSPromise.m in Sources */,
 				B640C4E91C085FB80042EFE6 /* MSGithubSearchResultContainer.m in Sources */,
-				B640C5011C08A93E0042EFE6 /* MSImageView.m in Sources */,
+				B640C5011C08A93E0042EFE6 /* MSWebImageView.m in Sources */,
 				B640C4A81C084B650042EFE6 /* MSAppDelegate.m in Sources */,
-				B67A93C31C0C504C007E4560 /* MSPromise.m in Sources */,
+				B67A93C31C0C504C007E4560 /* _MSPromise.m in Sources */,
 				B640C4D91C084D540042EFE6 /* MSViewController.m in Sources */,
 				B640C4F31C088D100042EFE6 /* MSGithubOwnerContainer.m in Sources */,
 				B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */,
-				B640C4FD1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m in Sources */,
+				B640C4FD1C08A65D0042EFE6 /* MSSearchResultTableViewCell.m in Sources */,
 				B640C4A51C084B650042EFE6 /* main.m in Sources */,
 				B640C4E11C084DD70042EFE6 /* MSiTunesNetworkManager.m in Sources */,
 				B640C4F61C0891EC0042EFE6 /* MSSearchResultTableView.m in Sources */,
 				B640C4F01C087C1B0042EFE6 /* MSSerializationValueTransformer.m in Sources */,
-				B640C4FA1C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m in Sources */,
 				B640C4DE1C084DC60042EFE6 /* MSGithubNetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MSImageView : UIView
+@interface MSWebImageView : UIView
 
 @property (nonatomic) NSURL *imageURL;
 

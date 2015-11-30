@@ -6,21 +6,21 @@
 //  Copyright © 2015 Alexander Sviridov. All rights reserved.
 //
 
-#import "MSLeftAlignedSearchResultTableViewCell.h"
+#import "MSSearchResultTableViewCell.h"
 
-#import "MSImageView.h"
+#import "MSWebImageView.h"
 #import "MSSearchResultCellViewModel.h"
-#import "MSImageView.h"
+#import "MSWebImageView.h"
 
-@interface MSLeftAlignedSearchResultTableViewCell ()
+@interface MSSearchResultTableViewCell ()
 //@property (weak, nonatomic) IBOutlet MSImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet MSImageView *cellImageView;
+@property (weak, nonatomic) IBOutlet MSWebImageView *cellImageView;
 
 @end
 
-@implementation MSLeftAlignedSearchResultTableViewCell
+@implementation MSSearchResultTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

@@ -10,6 +10,6 @@
 
 #import "MSSearchResultCellProtocol.h"
 
-@interface MSLeftAlignedSearchResultTableViewCell : UITableViewCell <MSSearchResultCellProtocol>
+@interface MSSearchResultTableViewCell : UITableViewCell <MSSearchResultCellProtocol>
 
 @end

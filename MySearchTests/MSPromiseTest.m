@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "MSPromise.h"
+#import "_MSPromise.h"
 
 @interface MSPromiseTest : XCTestCase
 

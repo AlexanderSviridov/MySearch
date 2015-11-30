@@ -27,7 +27,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     _githubManager = [MSGithubNetworkManager new];
     __weak typeof(self) weakself = self;
-    [self.githubManager searchWithQuery:@"reactivecocoa" compleationBlock:^(NSArray<id<MSSearchResultCellViewModel>> *results) {
+    [self.githubManager searchWithQuery:@"material" compleationBlock:^(NSArray<id<MSSearchResultCellViewModel>> *results) {
         weakself.tableView.cellArray = results;
     }];
 }
@@ -35,6 +35,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)textfieldAction:(UITextField *)sender
+{
+    [self.githubManager searchWithQuery:sender.text compleationBlock:^(NSArray<id<MSSearchResultCellViewModel>> *results) {
+        self.tableView.cellArray = results;
+    }];
 }
 
 @end

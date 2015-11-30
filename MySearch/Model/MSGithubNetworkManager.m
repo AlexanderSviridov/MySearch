@@ -22,6 +22,8 @@
     NSString *quertyString = [NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@&sort=stars&order=desc", query ];
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:quertyString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSError *__autoreleasing err;
+        if ( !data )
+            return;
         id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
         NSArray *items = result[@"items"];
         items = [MSSerializationManager serializedObjectFromArrayRepresentation:items class:[MSGithubSearchResultContainer class]];

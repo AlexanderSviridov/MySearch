@@ -20,6 +20,6 @@ typedef NS_ENUM(NSInteger, MSImageCacheManagerLoadedFrom){
 
 + (instancetype)sharedManager;
 
-- (void)loadCachedImageFromURL:(NSURL *)url compleationHandler:(void(^)(UIImage *, MSImageCacheManagerLoadedFrom))block;
+- (NSURLSessionDataTask *)loadCachedImageFromURL:(NSURL *)url compleationHandler:(void(^)(UIImage *, MSImageCacheManagerLoadedFrom))block;
 
 @end
