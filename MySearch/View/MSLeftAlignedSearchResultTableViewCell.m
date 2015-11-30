@@ -10,11 +10,13 @@
 
 #import "MSImageView.h"
 #import "MSSearchResultCellViewModel.h"
+#import "MSImageView.h"
 
 @interface MSLeftAlignedSearchResultTableViewCell ()
 //@property (weak, nonatomic) IBOutlet MSImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet MSImageView *cellImageView;
 
 @end
 
@@ -35,6 +37,7 @@
 //    self.imageView.imageURL = [cellModel cellViewModelImageURL];
     self.titleLabel.text = [cellModel cellViewModelTitle];
     self.descriptionLabel.text = [cellModel cellViewModelDetail];
+    self.cellImageView.imageURL = [cellModel cellViewModelImageURL];
 }
 
 @end

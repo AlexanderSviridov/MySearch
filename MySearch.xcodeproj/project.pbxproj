@@ -26,6 +26,9 @@
 		B640C4FA1C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4F91C08A63B0042EFE6 /* MSRightAlignedSearchResultTableViewCell.m */; };
 		B640C4FD1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4FC1C08A65D0042EFE6 /* MSLeftAlignedSearchResultTableViewCell.m */; };
 		B640C5011C08A93E0042EFE6 /* MSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C5001C08A93E0042EFE6 /* MSImageView.m */; };
+		B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93BE1C0C4CA3007E4560 /* MSImageCacheManager.m */; };
+		B67A93C31C0C504C007E4560 /* MSPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93C21C0C504C007E4560 /* MSPromise.m */; };
+		B67A93C81C0C552E007E4560 /* MSPromiseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93C71C0C552E007E4560 /* MSPromiseTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,11 @@
 		B640C4FE1C08A7D50042EFE6 /* MSSearchResultCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultCellProtocol.h; sourceTree = "<group>"; };
 		B640C4FF1C08A93E0042EFE6 /* MSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSImageView.h; sourceTree = "<group>"; };
 		B640C5001C08A93E0042EFE6 /* MSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSImageView.m; sourceTree = "<group>"; };
+		B67A93BD1C0C4CA3007E4560 /* MSImageCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSImageCacheManager.h; sourceTree = "<group>"; };
+		B67A93BE1C0C4CA3007E4560 /* MSImageCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSImageCacheManager.m; sourceTree = "<group>"; };
+		B67A93C11C0C504C007E4560 /* MSPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPromise.h; sourceTree = "<group>"; };
+		B67A93C21C0C504C007E4560 /* MSPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromise.m; sourceTree = "<group>"; };
+		B67A93C71C0C552E007E4560 /* MSPromiseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromiseTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				B640C4BD1C084B650042EFE6 /* MySearchTests.m */,
+				B67A93C71C0C552E007E4560 /* MSPromiseTest.m */,
 				B640C4BF1C084B650042EFE6 /* Info.plist */,
 			);
 			path = MySearchTests;
@@ -190,6 +199,8 @@
 		B640C4DA1C084D7B0042EFE6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B67A93C01C0C503D007E4560 /* Promises */,
+				B67A93BC1C0C4C88007E4560 /* ImageCaching */,
 				B640C4E31C085E050042EFE6 /* Serialization */,
 				B640C4E21C084DED0042EFE6 /* MSNetworkManagerProtocol.h */,
 				B640C4DC1C084DC60042EFE6 /* MSGithubNetworkManager.h */,
@@ -239,6 +250,24 @@
 				B640C4EC1C0864270042EFE6 /* NSArray+MSLinqExtension.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B67A93BC1C0C4C88007E4560 /* ImageCaching */ = {
+			isa = PBXGroup;
+			children = (
+				B67A93BD1C0C4CA3007E4560 /* MSImageCacheManager.h */,
+				B67A93BE1C0C4CA3007E4560 /* MSImageCacheManager.m */,
+			);
+			path = ImageCaching;
+			sourceTree = "<group>";
+		};
+		B67A93C01C0C503D007E4560 /* Promises */ = {
+			isa = PBXGroup;
+			children = (
+				B67A93C11C0C504C007E4560 /* MSPromise.h */,
+				B67A93C21C0C504C007E4560 /* MSPromise.m */,
+			);
+			path = Promises;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,9 +402,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */,
+				B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */,
 				B640C4E91C085FB80042EFE6 /* MSGithubSearchResultContainer.m in Sources */,
 				B640C5011C08A93E0042EFE6 /* MSImageView.m in Sources */,
 				B640C4A81C084B650042EFE6 /* MSAppDelegate.m in Sources */,
+				B67A93C31C0C504C007E4560 /* MSPromise.m in Sources */,
 				B640C4D91C084D540042EFE6 /* MSViewController.m in Sources */,
 				B640C4F31C088D100042EFE6 /* MSGithubOwnerContainer.m in Sources */,
 				B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */,
@@ -394,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B640C4BE1C084B650042EFE6 /* MySearchTests.m in Sources */,
+				B67A93C81C0C552E007E4560 /* MSPromiseTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MySearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = myself.MySearch;
@@ -537,6 +570,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MySearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = myself.MySearch;
@@ -611,6 +645,7 @@
 				B640C4CF1C084B650042EFE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B640C4D01C084B650042EFE6 /* Build configuration list for PBXNativeTarget "MySearchTests" */ = {
 			isa = XCConfigurationList;
@@ -619,6 +654,7 @@
 				B640C4D21C084B650042EFE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B640C4D31C084B650042EFE6 /* Build configuration list for PBXNativeTarget "MySearchUITests" */ = {
 			isa = XCConfigurationList;
@@ -627,6 +663,7 @@
 				B640C4D51C084B650042EFE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

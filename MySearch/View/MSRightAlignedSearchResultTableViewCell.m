@@ -10,6 +10,8 @@
 
 @implementation MSRightAlignedSearchResultTableViewCell
 
+@synthesize cellViewModelDetail = _cellViewModelDetail, cellViewModelTitle = _cellViewModelTitle, cellViewModelImageURL = _cellViewModelImageURL;
+
 - (void)awakeFromNib {
     // Initialization code
 }

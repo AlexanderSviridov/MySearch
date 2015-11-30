@@ -14,7 +14,7 @@
 
 @property id login;
 @property id container_id;
-@property id avatar_url;
+@property NSString *avatar_url;
 @property id gravatar_id;
 @property id url;
 @property id html_url;
