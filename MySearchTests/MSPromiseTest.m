@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "_MSPromise.h"
+#import "MSPromise.h"
 
 @interface MSPromiseTest : XCTestCase
 
@@ -29,18 +29,24 @@
 - (void)testCreation
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@""];
-    
+    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
     MSPromise *newPromise = [MSPromise newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfill, MSPromiseRejectBclock reject) {
         fullfill(@2);
         return nil;
     }];
-    [newPromise then:^id(NSNumber *value) {
+    [[newPromise then:^id(NSNumber *value) {
         XCTAssertEqual(value, @2);
+        return nil;
+    }] then:^MSPromise *(id value) {
+        XCTAssertEqual(value, @2 );
         [expectation fulfill];
         return nil;
     }];
-    [self waitForExpectationsWithTimeout:1 handler:^(NSError * _Nullable error) {
-        XCTFail(@"");
+    
+        dispatch_semaphore_signal(sem);
+    
+    [self waitForExpectationsWithTimeout:2 handler:^(NSError * _Nullable error) {
+        XCTAssertNil(error);
     }];
 }
 

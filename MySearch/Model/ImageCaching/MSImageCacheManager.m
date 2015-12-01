@@ -7,6 +7,11 @@
 //
 
 #import "MSImageCacheManager.h"
+#import "MSPromise.h"
+
+@implementation MSImageCacheLoadImageContainer
+
+@end
 
 @implementation MSImageCacheManager
 {
@@ -34,37 +39,41 @@
     return self;
 }
 
-- (NSURLSessionDataTask *)loadCachedImageFromURL:(NSURL *)url compleationHandler:(void (^)(UIImage *, MSImageCacheManagerLoadedFrom))block
+- (MSPromise *)loadCachedImageFromURL:(NSURL *)url
 {
     if ( !url )
     {
-        block(nil, MSImageCacheManagerLoadedFromError);
-        return nil;
+        return [MSPromise promiseWithError:[NSError errorWithDomain:@"" code:0 userInfo:nil]];
     }
     UIImage *cachedImage = [_cached objectForKey:url];
     if ( cachedImage )
     {
-        block(cachedImage, MSImageCacheManagerLoadedFromCache);
-        return nil;
+        MSImageCacheLoadImageContainer *container = [MSImageCacheLoadImageContainer new];
+        container.loadedFrom = MSImageCacheManagerLoadedFromCache;
+        container.image = cachedImage;
+        return [MSPromise promiseWithValue:container];
     }
-    NSURLSessionDataTask *_dataTask;
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:2];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:0];
     
-    _dataTask = [[NSURLSession sharedSession]dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+    return [MSPromise newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfil, MSPromiseRejectBclock reject) {
+        NSURLSessionDataTask *_dataTask = [[NSURLSession sharedSession]dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            MSImageCacheLoadImageContainer *container = [MSImageCacheLoadImageContainer new];
             UIImage *resultImage = [UIImage imageWithData:data];
             if ( error || !resultImage )
             {
-                block( nil, MSImageCacheManagerLoadedFromError );
+                reject([NSError errorWithDomain:@"" code:0 userInfo:nil]);
                 return;
             }
             [_cached setObject:resultImage forKey:url];
-            block( resultImage, MSImageCacheManagerLoadedFromNetwork );
-        });
-        
+            container.loadedFrom = MSImageCacheManagerLoadedFromNetwork;
+            container.image = resultImage;
+            fullfil( container );
+        }];
+        [_dataTask resume];
+        return ^{
+            [_dataTask cancel];
+        };
     }];
-    [_dataTask resume];
-    return _dataTask;
 }
 
 @end

@@ -8,12 +8,15 @@
 
 #import "MSWebImageView.h"
 #import "MSImageCacheManager.h"
+#import "MSPromise.h"
+#import "MSErrorView.h"
 
 @implementation MSWebImageView
 {
-    NSURLSessionDataTask *_dataTask;
+    MSPromise *_loadImagePromise;
     UIActivityIndicatorView *_spinner;
     UIImageView *_imageView;
+    MSErrorView *_errorView;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -24,6 +27,7 @@
         _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         _spinner.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
         _imageView = [[UIImageView alloc] init];
+        _errorView = [MSErrorView new];
     }
     return self;
 }
@@ -32,32 +36,36 @@
 {
     _imageURL = imageURL;
     __weak typeof(self) weakself = self;
-    [_dataTask cancel];
+    [_loadImagePromise dispose];
     self.layer.contents = nil;
-    self.backgroundColor = [UIColor clearColor];
     [_imageView removeFromSuperview];
+    [_errorView removeFromSuperview];
     [self addSubview:_spinner];
     [_spinner startAnimating];
-    _dataTask = [MSImageCacheManager.sharedManager loadCachedImageFromURL:imageURL compleationHandler:^(UIImage *image, MSImageCacheManagerLoadedFrom loadedFrom) {
-        if ( MSImageCacheManagerLoadedFromCache == loadedFrom )
+    __weak MSWebImageView *self_weak = self;
+    _loadImagePromise = [[[MSImageCacheManager.sharedManager loadCachedImageFromURL:[NSURL URLWithString:@"http://www.google.com"]] then:^MSPromise *(MSImageCacheLoadImageContainer *container) {
+        if ( ![self_weak.imageURL isEqual:imageURL] )
+            return nil;
+        if ( MSImageCacheManagerLoadedFromCache == container.loadedFrom )
         {
             [weakself addSubview:_imageView];
-            _imageView.image = image;
+            _imageView.image = container.image;
             [_spinner stopAnimating];
             [_spinner removeFromSuperview];
-            return;
+            return nil;
         }
-        if ( MSImageCacheManagerLoadedFromError == loadedFrom )
-        {
-            [_spinner stopAnimating];
-            [_spinner removeFromSuperview];
-            self.backgroundColor = [UIColor colorWithHue:0 saturation:.8 brightness:1 alpha:1];
-            return;
-        }
-        _imageView.image = image;
+        _imageView.image = container.image;
         [UIView transitionFromView:_spinner toView:_imageView duration:.3 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut completion:^(BOOL finished) {
             [_spinner stopAnimating];
         }];
+        return nil;
+    }] catch:^MSPromise *(NSError *error) {
+        NSLog(@"%@", error );
+//        [_spinner stopAnimating];
+        [UIView transitionFromView:_spinner toView:_errorView duration:.3 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut completion:^(BOOL finished) {
+            [_spinner stopAnimating];
+        }];
+        return nil;
     }];
 }
 
@@ -66,6 +74,7 @@
     [super layoutSubviews];
     _spinner.frame = self.bounds;
     _imageView.frame = self.bounds;
+    _errorView.frame = self.bounds;
 }
 
 @end

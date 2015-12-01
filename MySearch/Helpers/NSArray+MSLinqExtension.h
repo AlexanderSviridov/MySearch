@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (MSLinqExtension)
+@interface NSArray<ObjectType> (MSLinqExtension)
 
-- (instancetype)linq_map:(id (^)(id))mappingBlock;
+- (instancetype)linq_map:(id (^)(ObjectType))mappingBlock;
+
++ (NSArray *)arrayWithBlock:(id(^)())block count:(NSInteger)count;
 
 @end

@@ -26,10 +26,10 @@
 		B640C4FD1C08A65D0042EFE6 /* MSSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4FC1C08A65D0042EFE6 /* MSSearchResultTableViewCell.m */; };
 		B640C5011C08A93E0042EFE6 /* MSWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C5001C08A93E0042EFE6 /* MSWebImageView.m */; };
 		B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93BE1C0C4CA3007E4560 /* MSImageCacheManager.m */; };
-		B67A93C31C0C504C007E4560 /* _MSPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93C21C0C504C007E4560 /* _MSPromise.m */; };
 		B67A93C81C0C552E007E4560 /* MSPromiseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93C71C0C552E007E4560 /* MSPromiseTest.m */; };
-		B67A93CC1C0C79CB007E4560 /* _2MSPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93CB1C0C79CB007E4560 /* _2MSPromise.m */; };
 		B67A93CF1C0C9F58007E4560 /* MSPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93CE1C0C9F58007E4560 /* MSPromise.m */; };
+		B6CCA04E1C0DECC700ABF80B /* white_close_x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6CCA04D1C0DECC700ABF80B /* white_close_x.png */; };
+		B6CCA0511C0DECED00ABF80B /* MSErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CCA0501C0DECED00ABF80B /* MSErrorView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,13 +91,12 @@
 		B640C5001C08A93E0042EFE6 /* MSWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWebImageView.m; sourceTree = "<group>"; };
 		B67A93BD1C0C4CA3007E4560 /* MSImageCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSImageCacheManager.h; sourceTree = "<group>"; };
 		B67A93BE1C0C4CA3007E4560 /* MSImageCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSImageCacheManager.m; sourceTree = "<group>"; };
-		B67A93C11C0C504C007E4560 /* _MSPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MSPromise.h; sourceTree = "<group>"; };
-		B67A93C21C0C504C007E4560 /* _MSPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MSPromise.m; sourceTree = "<group>"; };
 		B67A93C71C0C552E007E4560 /* MSPromiseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromiseTest.m; sourceTree = "<group>"; };
-		B67A93CA1C0C79CB007E4560 /* _2MSPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _2MSPromise.h; sourceTree = "<group>"; };
-		B67A93CB1C0C79CB007E4560 /* _2MSPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _2MSPromise.m; sourceTree = "<group>"; };
 		B67A93CD1C0C9F58007E4560 /* MSPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPromise.h; sourceTree = "<group>"; };
 		B67A93CE1C0C9F58007E4560 /* MSPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromise.m; sourceTree = "<group>"; };
+		B6CCA04D1C0DECC700ABF80B /* white_close_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_close_x.png; sourceTree = "<group>"; };
+		B6CCA04F1C0DECED00ABF80B /* MSErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSErrorView.h; sourceTree = "<group>"; };
+		B6CCA0501C0DECED00ABF80B /* MSErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSErrorView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +147,7 @@
 		B640C4A21C084B650042EFE6 /* MySearch */ = {
 			isa = PBXGroup;
 			children = (
+				B6CCA04C1C0DECBD00ABF80B /* Resourses */,
 				B640C4EA1C0863FD0042EFE6 /* Helpers */,
 				B640C4DA1C084D7B0042EFE6 /* Model */,
 				B640C4DB1C084D7B0042EFE6 /* View */,
@@ -225,6 +225,8 @@
 				B640C4FC1C08A65D0042EFE6 /* MSSearchResultTableViewCell.m */,
 				B640C4FF1C08A93E0042EFE6 /* MSWebImageView.h */,
 				B640C5001C08A93E0042EFE6 /* MSWebImageView.m */,
+				B6CCA04F1C0DECED00ABF80B /* MSErrorView.h */,
+				B6CCA0501C0DECED00ABF80B /* MSErrorView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,14 +267,18 @@
 		B67A93C01C0C503D007E4560 /* Promises */ = {
 			isa = PBXGroup;
 			children = (
-				B67A93C11C0C504C007E4560 /* _MSPromise.h */,
-				B67A93C21C0C504C007E4560 /* _MSPromise.m */,
-				B67A93CA1C0C79CB007E4560 /* _2MSPromise.h */,
-				B67A93CB1C0C79CB007E4560 /* _2MSPromise.m */,
 				B67A93CD1C0C9F58007E4560 /* MSPromise.h */,
 				B67A93CE1C0C9F58007E4560 /* MSPromise.m */,
 			);
 			path = Promises;
+			sourceTree = "<group>";
+		};
+		B6CCA04C1C0DECBD00ABF80B /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				B6CCA04D1C0DECC700ABF80B /* white_close_x.png */,
+			);
+			path = Resourses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6CCA04E1C0DECC700ABF80B /* white_close_x.png in Resources */,
 				B640C4B31C084B650042EFE6 /* LaunchScreen.storyboard in Resources */,
 				B640C4B01C084B650042EFE6 /* Assets.xcassets in Resources */,
 				B640C4AE1C084B650042EFE6 /* Main.storyboard in Resources */,
@@ -409,11 +416,9 @@
 				B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */,
 				B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */,
 				B67A93CF1C0C9F58007E4560 /* MSPromise.m in Sources */,
-				B67A93CC1C0C79CB007E4560 /* _2MSPromise.m in Sources */,
 				B640C4E91C085FB80042EFE6 /* MSGithubSearchResultContainer.m in Sources */,
 				B640C5011C08A93E0042EFE6 /* MSWebImageView.m in Sources */,
 				B640C4A81C084B650042EFE6 /* MSAppDelegate.m in Sources */,
-				B67A93C31C0C504C007E4560 /* _MSPromise.m in Sources */,
 				B640C4D91C084D540042EFE6 /* MSViewController.m in Sources */,
 				B640C4F31C088D100042EFE6 /* MSGithubOwnerContainer.m in Sources */,
 				B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */,
@@ -421,6 +426,7 @@
 				B640C4A51C084B650042EFE6 /* main.m in Sources */,
 				B640C4E11C084DD70042EFE6 /* MSiTunesNetworkManager.m in Sources */,
 				B640C4F61C0891EC0042EFE6 /* MSSearchResultTableView.m in Sources */,
+				B6CCA0511C0DECED00ABF80B /* MSErrorView.m in Sources */,
 				B640C4F01C087C1B0042EFE6 /* MSSerializationValueTransformer.m in Sources */,
 				B640C4DE1C084DC60042EFE6 /* MSGithubNetworkManager.m in Sources */,
 			);

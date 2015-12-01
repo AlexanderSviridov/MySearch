@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import "MSPromise.h"
+
 @protocol MSSearchResultCellViewModel;
 
 @protocol MSNetworkManagerProtocol <NSObject>
 
-- (void)searchWithQuery:(NSString *)query compleationBlock:(void(^)(NSArray<id<MSSearchResultCellViewModel>> *results))compleation;
+- (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)searchWithQuery:(NSString *)query;
 
 @end

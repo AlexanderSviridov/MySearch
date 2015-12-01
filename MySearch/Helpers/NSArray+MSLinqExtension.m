@@ -21,6 +21,26 @@
         if ( newItem )
             [arr addObject:newItem];
     }
+    if ( [self isKindOfClass:[NSMutableArray class]] )
+        return arr;
+    return [NSArray arrayWithArray:arr];
+}
+
++ (NSArray *)arrayWithBlock:(id (^)())block count:(NSInteger)count
+{
+    if ( count < 0 )
+        return nil;
+    if ( !block )
+        return nil;
+    NSMutableArray *arr = [NSMutableArray new];
+    for ( NSInteger i = 0; i < count; ++i )
+    {
+        id item = block( i );
+        if ( item )
+        {
+            [arr addObject:item];
+        }
+    }
     return [NSArray arrayWithArray:arr];
 }
 

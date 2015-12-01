@@ -11,6 +11,7 @@
 #import "MSGithubNetworkManager.h"
 #import "MSSearchResultTableView.h"
 #import "MSSearchResultCellViewModel.h"
+#import "MSPromise.h"
 
 @interface MSViewController ()
 
@@ -26,10 +27,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     _githubManager = [MSGithubNetworkManager new];
-    __weak typeof(self) weakself = self;
-    [self.githubManager searchWithQuery:@"material" compleationBlock:^(NSArray<id<MSSearchResultCellViewModel>> *results) {
-        weakself.tableView.cellArray = results;
-    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,8 +36,10 @@
 
 - (IBAction)textfieldAction:(UITextField *)sender
 {
-    [self.githubManager searchWithQuery:sender.text compleationBlock:^(NSArray<id<MSSearchResultCellViewModel>> *results) {
-        self.tableView.cellArray = results;
+    [sender resignFirstResponder];
+    [[self.githubManager searchWithQuery:sender.text] then:^MSPromise *(NSArray<id<MSSearchResultCellViewModel>> *items) {
+        self.tableView.cellArray = items;
+        return nil;
     }];
 }
 

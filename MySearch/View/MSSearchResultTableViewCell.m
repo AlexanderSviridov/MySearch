@@ -38,6 +38,7 @@
     self.titleLabel.text = [cellModel cellViewModelTitle];
     self.descriptionLabel.text = [cellModel cellViewModelDetail];
     self.cellImageView.imageURL = [cellModel cellViewModelImageURL];
+    self.cellImageView.backgroundColor = [UIColor clearColor];
 }
 
 @end

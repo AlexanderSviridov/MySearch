@@ -9,6 +9,7 @@
 #import "MSSearchResultTableView.h"
 #import "MSSearchResultCellViewModel.h"
 #import "MSSearchResultCellProtocol.h"
+#import "NSArray+MSLinqExtension.h"
 
 @interface MSSearchResultTableView ()
 
@@ -29,6 +30,7 @@ static NSString *kMSSearchResultTableViewLeftCellIdentifier = @"kMSLeftSearchRes
     {
         self.delegate = self;
         self.dataSource = self;
+        self.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
     }
     return self;
 }
@@ -39,23 +41,12 @@ static NSString *kMSSearchResultTableViewLeftCellIdentifier = @"kMSLeftSearchRes
     [self reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     _cellArray = [cellArray copy];
     [self endUpdates];
+    [self layoutSubviews];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_cellArray count];
-}
-
-- (void)setHeaderView:(UIView *)headerView
-{
-    _headerView = headerView;
-    [self addSubview:headerView];
-    _defaultInset = self.contentInset;
-    self.contentInset = ({
-        UIEdgeInsets inset = self.contentInset;
-        inset.top += 50;
-        inset;
-    });
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,27 +70,5 @@ static NSString *kMSSearchResultTableViewLeftCellIdentifier = @"kMSLeftSearchRes
 {
     return kMSSearchResultTableViewCellHeight;
 }
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    self.headerView.frame = (CGRect){
-        .origin.y = self.bounds.origin.y + self.contentInset.top - 50,
-        .origin.x = self.bounds.origin.x,
-        .size.height = 50,
-        .size.width = self.bounds.size.width
-    };
-    
-}
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    return _headerView;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    return 50.;
-//}
 
 @end

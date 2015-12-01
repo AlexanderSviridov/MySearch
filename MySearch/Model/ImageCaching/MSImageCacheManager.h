@@ -9,17 +9,25 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+#import "MSPromise.h"
+
 typedef NS_ENUM(NSInteger, MSImageCacheManagerLoadedFrom){
     MSImageCacheManagerLoadedFromFile,
     MSImageCacheManagerLoadedFromCache,
     MSImageCacheManagerLoadedFromNetwork,
-    MSImageCacheManagerLoadedFromError,
 };
+
+@interface MSImageCacheLoadImageContainer : NSObject
+
+@property MSImageCacheManagerLoadedFrom loadedFrom;
+@property UIImage *image;
+
+@end
 
 @interface MSImageCacheManager : NSObject
 
 + (instancetype)sharedManager;
 
-- (NSURLSessionDataTask *)loadCachedImageFromURL:(NSURL *)url compleationHandler:(void(^)(UIImage *, MSImageCacheManagerLoadedFrom))block;
+- (MSPromise<MSImageCacheLoadImageContainer *> *)loadCachedImageFromURL:(NSURL *)url;
 
 @end

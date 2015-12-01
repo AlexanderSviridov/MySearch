@@ -17,20 +17,32 @@
     
 }
 
-- (void)searchWithQuery:(NSString *)query compleationBlock:(void (^)(NSArray<id<MSSearchResultCellViewModel>> *))compleation
+- (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)searchWithQuery:(NSString *)query
 {
-    NSString *quertyString = [NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@&sort=stars&order=desc", query ];
-    [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:quertyString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSError *__autoreleasing err;
-        if ( !data )
-            return;
-        id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
-        NSArray *items = result[@"items"];
-        items = [MSSerializationManager serializedObjectFromArrayRepresentation:items class:[MSGithubSearchResultContainer class]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            compleation( items );
-        });
-    }] resume];
+    return [MSPromise newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfil, MSPromiseRejectBclock reject) {
+        NSString *quertyString = [NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@&sort=stars&order=desc", query ];
+        NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:quertyString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            NSError *__autoreleasing err;
+            if ( !data )
+            {
+                reject(error);
+                return;
+            }
+            id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
+            if ( err )
+            {
+                reject(err);
+                return;
+            }
+            NSArray *items = result[@"items"];
+            items = [MSSerializationManager serializedObjectFromArrayRepresentation:items class:[MSGithubSearchResultContainer class]];
+            fullfil( items );
+        }];
+        [dataTask resume];
+        return ^{
+            [dataTask cancel];
+        };
+    }];
 }
 
 @end
