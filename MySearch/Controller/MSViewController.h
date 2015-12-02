@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MSNetworkManagerProtocol;
+
+@interface MSViewControllerManagerContainer : NSObject
+
+@property id<MSNetworkManagerProtocol> networkManager;
+@property (copy) NSString *name;
+
++ (instancetype)networkManagerWithManager:(id<MSNetworkManagerProtocol>)manager name:(NSString *)name;
+
+@end
+
 @interface MSViewController : UIViewController
 
+@property NSArray<MSViewControllerManagerContainer *> *networkManagers;
 
 @end
 

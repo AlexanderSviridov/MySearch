@@ -22,11 +22,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="B4u-eR-I1d">
                                     <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kMSLeftSearchResultTableViewIdentifier" rowHeight="100" id="7gr-4X-p7f" customClass="MSSearchResultTableViewCell">
@@ -157,9 +159,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZb-gK-b1e" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4RT-7M-k9f">
-                                        <rect key="frame" x="8" y="8" width="359" height="34"/>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zy6-Yl-saB">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rla-We-mHs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <animations/>
+                                        </view>
                                         <animations/>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4RT-7M-k9f" customClass="MSSearchTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <animations/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="0.99993491170000004" blue="0.99997484680000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -168,13 +182,16 @@
                                     </textField>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.81700658798217773" green="1" blue="0.15352639555931091" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AQM-oF-K4r"/>
-                                    <constraint firstAttribute="bottom" secondItem="4RT-7M-k9f" secondAttribute="bottom" constant="8" id="H3Y-LY-MLS"/>
-                                    <constraint firstItem="4RT-7M-k9f" firstAttribute="leading" secondItem="bZb-gK-b1e" secondAttribute="leading" constant="8" id="O4Z-v0-0bq"/>
-                                    <constraint firstAttribute="trailing" secondItem="4RT-7M-k9f" secondAttribute="trailing" constant="8" id="qxd-jg-Rdi"/>
-                                    <constraint firstItem="4RT-7M-k9f" firstAttribute="top" secondItem="bZb-gK-b1e" secondAttribute="top" constant="8" id="s2i-Lh-sqC"/>
+                                    <constraint firstAttribute="bottom" secondItem="4RT-7M-k9f" secondAttribute="bottom" id="H3Y-LY-MLS"/>
+                                    <constraint firstItem="zy6-Yl-saB" firstAttribute="leading" secondItem="bZb-gK-b1e" secondAttribute="leading" id="J3T-gI-Xav"/>
+                                    <constraint firstItem="4RT-7M-k9f" firstAttribute="leading" secondItem="bZb-gK-b1e" secondAttribute="leading" id="O4Z-v0-0bq"/>
+                                    <constraint firstItem="zy6-Yl-saB" firstAttribute="top" secondItem="bZb-gK-b1e" secondAttribute="top" id="Uva-j8-YzT"/>
+                                    <constraint firstAttribute="trailing" secondItem="zy6-Yl-saB" secondAttribute="trailing" id="bmE-xE-P6r"/>
+                                    <constraint firstAttribute="bottom" secondItem="zy6-Yl-saB" secondAttribute="bottom" id="iez-kM-Oga"/>
+                                    <constraint firstAttribute="trailing" secondItem="4RT-7M-k9f" secondAttribute="trailing" id="qxd-jg-Rdi"/>
+                                    <constraint firstItem="4RT-7M-k9f" firstAttribute="top" secondItem="bZb-gK-b1e" secondAttribute="top" id="s2i-Lh-sqC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -192,7 +209,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="VI6-Ih-Aku">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="vdu-9Z-ivG">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="vdu-9Z-ivG">
                             <rect key="frame" x="113" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
@@ -200,10 +217,16 @@
                                 <segment title="First"/>
                                 <segment title="Second"/>
                             </segments>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="topSegmentControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="cnw-zW-cvb"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchTextField" destination="4RT-7M-k9f" id="Mot-dK-bQ8"/>
                         <outlet property="tableView" destination="fIl-ct-efm" id="wOg-Vj-QPQ"/>
+                        <outlet property="topSegmentControl" destination="vdu-9Z-ivG" id="Rka-74-3hl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -215,7 +238,7 @@
             <objects>
                 <navigationController id="YD3-ls-epf" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xNt-Oj-Q2f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="xNt-Oj-Q2f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>

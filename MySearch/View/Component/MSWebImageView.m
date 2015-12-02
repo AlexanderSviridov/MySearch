@@ -43,7 +43,10 @@
     [self addSubview:_spinner];
     [_spinner startAnimating];
     __weak MSWebImageView *self_weak = self;
-    _loadImagePromise = [[[MSImageCacheManager.sharedManager loadCachedImageFromURL:[NSURL URLWithString:@"http://www.google.com"]] then:^MSPromise *(MSImageCacheLoadImageContainer *container) {
+    _loadImagePromise = [[[MSImageCacheManager.sharedManager loadCachedImageFromURL:
+//                           [NSURL URLWithString:@"http://www.google.com"]
+                           imageURL
+                           ] then:^MSPromise *(MSImageCacheLoadImageContainer *container) {
         if ( ![self_weak.imageURL isEqual:imageURL] )
             return nil;
         if ( MSImageCacheManagerLoadedFromCache == container.loadedFrom )
@@ -55,16 +58,12 @@
             return nil;
         }
         _imageView.image = container.image;
-        [UIView transitionFromView:_spinner toView:_imageView duration:.3 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut completion:^(BOOL finished) {
-            [_spinner stopAnimating];
-        }];
+        [UIView transitionFromView:_spinner toView:_imageView duration:.3 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut completion:nil];
         return nil;
     }] catch:^MSPromise *(NSError *error) {
         NSLog(@"%@", error );
 //        [_spinner stopAnimating];
-        [UIView transitionFromView:_spinner toView:_errorView duration:.3 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut completion:^(BOOL finished) {
-            [_spinner stopAnimating];
-        }];
+        [UIView transitionFromView:_spinner toView:_errorView duration:.3 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut completion:nil];
         return nil;
     }];
 }

@@ -25,11 +25,18 @@
 		B6D334551C0EE0F7002F3EF3 /* MSErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334521C0EE0F7002F3EF3 /* MSErrorView.m */; };
 		B6D334561C0EE0F7002F3EF3 /* MSWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334541C0EE0F7002F3EF3 /* MSWebImageView.m */; };
 		B6D334601C0EE32F002F3EF3 /* MSGithubNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3345B1C0EE32F002F3EF3 /* MSGithubNetworkManager.m */; };
-		B6D334611C0EE32F002F3EF3 /* MSGithubOwnerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3345D1C0EE32F002F3EF3 /* MSGithubOwnerContainer.m */; };
-		B6D334621C0EE32F002F3EF3 /* MSGithubSearchResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3345F1C0EE32F002F3EF3 /* MSGithubSearchResultContainer.m */; };
 		B6D334661C0EE3AE002F3EF3 /* MSiTunesNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334651C0EE3AE002F3EF3 /* MSiTunesNetworkManager.m */; };
-		B6D334721C0EE45D002F3EF3 /* MSSearchResultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3346F1C0EE45D002F3EF3 /* MSSearchResultTableView.m */; };
-		B6D334731C0EE45D002F3EF3 /* MSSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334711C0EE45D002F3EF3 /* MSSearchResultTableViewCell.m */; };
+		B6D334761C0EED62002F3EF3 /* MSSearchTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334751C0EED62002F3EF3 /* MSSearchTextField.m */; };
+		B6D3347F1C0EF45B002F3EF3 /* MSSearchResultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3347C1C0EF45B002F3EF3 /* MSSearchResultTableView.m */; };
+		B6D334801C0EF45B002F3EF3 /* MSSearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3347E1C0EF45B002F3EF3 /* MSSearchResultTableViewCell.m */; };
+		B6D334821C0EFBF1002F3EF3 /* search-icon-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = B6D334811C0EFBF1002F3EF3 /* search-icon-hi.png */; };
+		B6D334851C0EFDBD002F3EF3 /* MSEdgeContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334841C0EFDBD002F3EF3 /* MSEdgeContainerView.m */; };
+		B6D3348B1C0F062F002F3EF3 /* MSGithubOwnerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334881C0F062F002F3EF3 /* MSGithubOwnerContainer.m */; };
+		B6D3348C1C0F062F002F3EF3 /* MSGithubSearchResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3348A1C0F062F002F3EF3 /* MSGithubSearchResultContainer.m */; };
+		B6D3348F1C0F1790002F3EF3 /* MSNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D3348E1C0F1790002F3EF3 /* MSNetworkManager.m */; };
+		B6D334931C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334921C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.m */; };
+		B6D334971C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334961C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m */; };
+		B6D3349A1C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334991C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,19 +91,32 @@
 		B6D334541C0EE0F7002F3EF3 /* MSWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWebImageView.m; sourceTree = "<group>"; };
 		B6D3345A1C0EE32F002F3EF3 /* MSGithubNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGithubNetworkManager.h; sourceTree = "<group>"; };
 		B6D3345B1C0EE32F002F3EF3 /* MSGithubNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGithubNetworkManager.m; sourceTree = "<group>"; };
-		B6D3345C1C0EE32F002F3EF3 /* MSGithubOwnerContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGithubOwnerContainer.h; sourceTree = "<group>"; };
-		B6D3345D1C0EE32F002F3EF3 /* MSGithubOwnerContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGithubOwnerContainer.m; sourceTree = "<group>"; };
-		B6D3345E1C0EE32F002F3EF3 /* MSGithubSearchResultContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGithubSearchResultContainer.h; sourceTree = "<group>"; };
-		B6D3345F1C0EE32F002F3EF3 /* MSGithubSearchResultContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGithubSearchResultContainer.m; sourceTree = "<group>"; };
 		B6D334641C0EE3AE002F3EF3 /* MSiTunesNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiTunesNetworkManager.h; sourceTree = "<group>"; };
 		B6D334651C0EE3AE002F3EF3 /* MSiTunesNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSiTunesNetworkManager.m; sourceTree = "<group>"; };
 		B6D334671C0EE3D6002F3EF3 /* MSNetworkManagerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSNetworkManagerProtocol.h; sourceTree = "<group>"; };
-		B6D3346C1C0EE45D002F3EF3 /* MSSearchResultCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultCellProtocol.h; sourceTree = "<group>"; };
-		B6D3346D1C0EE45D002F3EF3 /* MSSearchResultCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultCellViewModel.h; sourceTree = "<group>"; };
-		B6D3346E1C0EE45D002F3EF3 /* MSSearchResultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultTableView.h; sourceTree = "<group>"; };
-		B6D3346F1C0EE45D002F3EF3 /* MSSearchResultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchResultTableView.m; sourceTree = "<group>"; };
-		B6D334701C0EE45D002F3EF3 /* MSSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultTableViewCell.h; sourceTree = "<group>"; };
-		B6D334711C0EE45D002F3EF3 /* MSSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchResultTableViewCell.m; sourceTree = "<group>"; };
+		B6D334741C0EED62002F3EF3 /* MSSearchTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchTextField.h; sourceTree = "<group>"; };
+		B6D334751C0EED62002F3EF3 /* MSSearchTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchTextField.m; sourceTree = "<group>"; };
+		B6D334791C0EF45B002F3EF3 /* MSSearchResultCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultCellProtocol.h; sourceTree = "<group>"; };
+		B6D3347A1C0EF45B002F3EF3 /* MSSearchResultCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultCellViewModel.h; sourceTree = "<group>"; };
+		B6D3347B1C0EF45B002F3EF3 /* MSSearchResultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultTableView.h; sourceTree = "<group>"; };
+		B6D3347C1C0EF45B002F3EF3 /* MSSearchResultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchResultTableView.m; sourceTree = "<group>"; };
+		B6D3347D1C0EF45B002F3EF3 /* MSSearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultTableViewCell.h; sourceTree = "<group>"; };
+		B6D3347E1C0EF45B002F3EF3 /* MSSearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchResultTableViewCell.m; sourceTree = "<group>"; };
+		B6D334811C0EFBF1002F3EF3 /* search-icon-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-hi.png"; sourceTree = "<group>"; };
+		B6D334831C0EFDBD002F3EF3 /* MSEdgeContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEdgeContainerView.h; sourceTree = "<group>"; };
+		B6D334841C0EFDBD002F3EF3 /* MSEdgeContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEdgeContainerView.m; sourceTree = "<group>"; };
+		B6D334871C0F062F002F3EF3 /* MSGithubOwnerContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGithubOwnerContainer.h; sourceTree = "<group>"; };
+		B6D334881C0F062F002F3EF3 /* MSGithubOwnerContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGithubOwnerContainer.m; sourceTree = "<group>"; };
+		B6D334891C0F062F002F3EF3 /* MSGithubSearchResultContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGithubSearchResultContainer.h; sourceTree = "<group>"; };
+		B6D3348A1C0F062F002F3EF3 /* MSGithubSearchResultContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGithubSearchResultContainer.m; sourceTree = "<group>"; };
+		B6D3348D1C0F1790002F3EF3 /* MSNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNetworkManager.h; sourceTree = "<group>"; };
+		B6D3348E1C0F1790002F3EF3 /* MSNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNetworkManager.m; sourceTree = "<group>"; };
+		B6D334911C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiTunesAppSearchRequestContainer.h; sourceTree = "<group>"; };
+		B6D334921C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSiTunesAppSearchRequestContainer.m; sourceTree = "<group>"; };
+		B6D334951C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiTunesSearchResponceContainer.h; sourceTree = "<group>"; };
+		B6D334961C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSiTunesSearchResponceContainer.m; sourceTree = "<group>"; };
+		B6D334981C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiTunesSearchResponceEntityContainer.h; sourceTree = "<group>"; };
+		B6D334991C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSiTunesSearchResponceEntityContainer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +233,7 @@
 		B640C4DB1C084D7B0042EFE6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B6D3346A1C0EE45D002F3EF3 /* Container */,
+				B6D334771C0EF45B002F3EF3 /* Content */,
 				B6D334501C0EE0F7002F3EF3 /* Component */,
 			);
 			path = View;
@@ -261,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				B6CCA04D1C0DECC700ABF80B /* white_close_x.png */,
+				B6D334811C0EFBF1002F3EF3 /* search-icon-hi.png */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -268,6 +289,10 @@
 		B6D334501C0EE0F7002F3EF3 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B6D334831C0EFDBD002F3EF3 /* MSEdgeContainerView.h */,
+				B6D334841C0EFDBD002F3EF3 /* MSEdgeContainerView.m */,
+				B6D334741C0EED62002F3EF3 /* MSSearchTextField.h */,
+				B6D334751C0EED62002F3EF3 /* MSSearchTextField.m */,
 				B6D334511C0EE0F7002F3EF3 /* MSErrorView.h */,
 				B6D334521C0EE0F7002F3EF3 /* MSErrorView.m */,
 				B6D334531C0EE0F7002F3EF3 /* MSWebImageView.h */,
@@ -282,6 +307,8 @@
 				B6D334591C0EE32F002F3EF3 /* Github */,
 				B6D334631C0EE3AE002F3EF3 /* iTunes */,
 				B6D334671C0EE3D6002F3EF3 /* MSNetworkManagerProtocol.h */,
+				B6D3348D1C0F1790002F3EF3 /* MSNetworkManager.h */,
+				B6D3348E1C0F1790002F3EF3 /* MSNetworkManager.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -289,12 +316,9 @@
 		B6D334591C0EE32F002F3EF3 /* Github */ = {
 			isa = PBXGroup;
 			children = (
+				B6D334861C0F062F002F3EF3 /* ResponceContainer */,
 				B6D3345A1C0EE32F002F3EF3 /* MSGithubNetworkManager.h */,
 				B6D3345B1C0EE32F002F3EF3 /* MSGithubNetworkManager.m */,
-				B6D3345C1C0EE32F002F3EF3 /* MSGithubOwnerContainer.h */,
-				B6D3345D1C0EE32F002F3EF3 /* MSGithubOwnerContainer.m */,
-				B6D3345E1C0EE32F002F3EF3 /* MSGithubSearchResultContainer.h */,
-				B6D3345F1C0EE32F002F3EF3 /* MSGithubSearchResultContainer.m */,
 			);
 			path = Github;
 			sourceTree = "<group>";
@@ -302,31 +326,64 @@
 		B6D334631C0EE3AE002F3EF3 /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
+				B6D334941C0F2B6F002F3EF3 /* ResponceContainer */,
+				B6D334901C0F1F5A002F3EF3 /* RequestContainer */,
 				B6D334641C0EE3AE002F3EF3 /* MSiTunesNetworkManager.h */,
 				B6D334651C0EE3AE002F3EF3 /* MSiTunesNetworkManager.m */,
 			);
 			path = iTunes;
 			sourceTree = "<group>";
 		};
-		B6D3346A1C0EE45D002F3EF3 /* Container */ = {
+		B6D334771C0EF45B002F3EF3 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				B6D3346B1C0EE45D002F3EF3 /* SearchTableView */,
+				B6D334781C0EF45B002F3EF3 /* SearchTableView */,
 			);
-			path = Container;
+			path = Content;
 			sourceTree = "<group>";
 		};
-		B6D3346B1C0EE45D002F3EF3 /* SearchTableView */ = {
+		B6D334781C0EF45B002F3EF3 /* SearchTableView */ = {
 			isa = PBXGroup;
 			children = (
-				B6D3346C1C0EE45D002F3EF3 /* MSSearchResultCellProtocol.h */,
-				B6D3346D1C0EE45D002F3EF3 /* MSSearchResultCellViewModel.h */,
-				B6D3346E1C0EE45D002F3EF3 /* MSSearchResultTableView.h */,
-				B6D3346F1C0EE45D002F3EF3 /* MSSearchResultTableView.m */,
-				B6D334701C0EE45D002F3EF3 /* MSSearchResultTableViewCell.h */,
-				B6D334711C0EE45D002F3EF3 /* MSSearchResultTableViewCell.m */,
+				B6D334791C0EF45B002F3EF3 /* MSSearchResultCellProtocol.h */,
+				B6D3347A1C0EF45B002F3EF3 /* MSSearchResultCellViewModel.h */,
+				B6D3347B1C0EF45B002F3EF3 /* MSSearchResultTableView.h */,
+				B6D3347C1C0EF45B002F3EF3 /* MSSearchResultTableView.m */,
+				B6D3347D1C0EF45B002F3EF3 /* MSSearchResultTableViewCell.h */,
+				B6D3347E1C0EF45B002F3EF3 /* MSSearchResultTableViewCell.m */,
 			);
 			path = SearchTableView;
+			sourceTree = "<group>";
+		};
+		B6D334861C0F062F002F3EF3 /* ResponceContainer */ = {
+			isa = PBXGroup;
+			children = (
+				B6D334871C0F062F002F3EF3 /* MSGithubOwnerContainer.h */,
+				B6D334881C0F062F002F3EF3 /* MSGithubOwnerContainer.m */,
+				B6D334891C0F062F002F3EF3 /* MSGithubSearchResultContainer.h */,
+				B6D3348A1C0F062F002F3EF3 /* MSGithubSearchResultContainer.m */,
+			);
+			path = ResponceContainer;
+			sourceTree = "<group>";
+		};
+		B6D334901C0F1F5A002F3EF3 /* RequestContainer */ = {
+			isa = PBXGroup;
+			children = (
+				B6D334911C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.h */,
+				B6D334921C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.m */,
+			);
+			path = RequestContainer;
+			sourceTree = "<group>";
+		};
+		B6D334941C0F2B6F002F3EF3 /* ResponceContainer */ = {
+			isa = PBXGroup;
+			children = (
+				B6D334951C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.h */,
+				B6D334961C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m */,
+				B6D334981C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.h */,
+				B6D334991C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m */,
+			);
+			path = ResponceContainer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6CCA04E1C0DECC700ABF80B /* white_close_x.png in Resources */,
+				B6D334821C0EFBF1002F3EF3 /* search-icon-hi.png in Resources */,
 				B640C4B31C084B650042EFE6 /* LaunchScreen.storyboard in Resources */,
 				B640C4B01C084B650042EFE6 /* Assets.xcassets in Resources */,
 				B640C4AE1C084B650042EFE6 /* Main.storyboard in Resources */,
@@ -462,21 +520,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6D334661C0EE3AE002F3EF3 /* MSiTunesNetworkManager.m in Sources */,
+				B6D334971C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m in Sources */,
+				B6D334931C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.m in Sources */,
 				B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */,
 				B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */,
-				B6D334611C0EE32F002F3EF3 /* MSGithubOwnerContainer.m in Sources */,
-				B6D334731C0EE45D002F3EF3 /* MSSearchResultTableViewCell.m in Sources */,
 				B67A93CF1C0C9F58007E4560 /* MSPromise.m in Sources */,
-				B6D334721C0EE45D002F3EF3 /* MSSearchResultTableView.m in Sources */,
 				B6D334561C0EE0F7002F3EF3 /* MSWebImageView.m in Sources */,
 				B640C4A81C084B650042EFE6 /* MSAppDelegate.m in Sources */,
 				B640C4D91C084D540042EFE6 /* MSViewController.m in Sources */,
+				B6D3348F1C0F1790002F3EF3 /* MSNetworkManager.m in Sources */,
+				B6D3348B1C0F062F002F3EF3 /* MSGithubOwnerContainer.m in Sources */,
 				B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */,
+				B6D334851C0EFDBD002F3EF3 /* MSEdgeContainerView.m in Sources */,
 				B6D334551C0EE0F7002F3EF3 /* MSErrorView.m in Sources */,
 				B640C4A51C084B650042EFE6 /* main.m in Sources */,
+				B6D3348C1C0F062F002F3EF3 /* MSGithubSearchResultContainer.m in Sources */,
+				B6D334801C0EF45B002F3EF3 /* MSSearchResultTableViewCell.m in Sources */,
+				B6D3349A1C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m in Sources */,
+				B6D334761C0EED62002F3EF3 /* MSSearchTextField.m in Sources */,
+				B6D3347F1C0EF45B002F3EF3 /* MSSearchResultTableView.m in Sources */,
 				B640C4F01C087C1B0042EFE6 /* MSSerializationValueTransformer.m in Sources */,
 				B6D334601C0EE32F002F3EF3 /* MSGithubNetworkManager.m in Sources */,
-				B6D334621C0EE32F002F3EF3 /* MSGithubSearchResultContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,9 +684,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MySearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = myself.MySearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -632,9 +698,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MySearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = myself.MySearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

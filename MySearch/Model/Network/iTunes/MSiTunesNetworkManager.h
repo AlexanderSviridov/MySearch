@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 
 #import "MSNetworkManagerProtocol.h"
+#import "MSNetworkManager.h"
 
-@interface MSiTunesNetworkManager : NSObject <MSNetworkManagerProtocol>
+@class MSiTunesSearchResponceContainer;
+
+@interface MSiTunesNetworkManager : MSNetworkManager <MSNetworkManagerProtocol>
+
+- (MSPromise<MSiTunesSearchResponceContainer *> *)searchEntitiesWithQuery:(NSString *)query;
 
 @end

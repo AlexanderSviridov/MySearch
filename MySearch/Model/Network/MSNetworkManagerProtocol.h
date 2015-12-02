@@ -16,4 +16,8 @@
 
 - (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)searchWithQuery:(NSString *)query;
 
+- (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)getMoreResults;
+
+- (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)update;
+
 @end

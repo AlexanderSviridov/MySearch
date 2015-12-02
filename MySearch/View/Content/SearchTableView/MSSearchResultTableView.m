@@ -30,7 +30,9 @@ static NSString *kMSSearchResultTableViewLeftCellIdentifier = @"kMSLeftSearchRes
     {
         self.delegate = self;
         self.dataSource = self;
+        self.backgroundView = nil;
         self.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -51,7 +53,7 @@ static NSString *kMSSearchResultTableViewLeftCellIdentifier = @"kMSLeftSearchRes
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell<MSSearchResultCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:indexPath.row%2? kMSSearchResultTableViewLeftCellIdentifier : kMSSearchResultTableViewRightCellIdentifier forIndexPath:indexPath];
+    UITableViewCell<MSSearchResultCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:indexPath.row%2? kMSSearchResultTableViewRightCellIdentifier : kMSSearchResultTableViewLeftCellIdentifier forIndexPath:indexPath];
     [cell configureCellFromModel:_cellArray[indexPath.row]];
     return cell;
 }

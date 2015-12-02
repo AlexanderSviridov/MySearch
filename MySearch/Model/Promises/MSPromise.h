@@ -20,11 +20,11 @@ typedef void(^MSPromiseDisposable)();
 + (instancetype)promiseWithValue:(id)value;
 + (instancetype)promiseWithError:(NSError *)error;
 
-- (MSPromise *)then:(MSPromise *(^)(ObjectType))thenBlock;
-- (MSPromise *)thenOnBackground:(MSPromise *(^)(ObjectType))thenBlock;
-- (MSPromise *)then:(MSPromise *(^)(ObjectType))thenBlock onQueue:(dispatch_queue_t)queue;
+- (id)then:(MSPromise *(^)(ObjectType))thenBlock;
+- (id)thenOnBackground:(MSPromise *(^)(ObjectType))thenBlock;
+- (id)then:(MSPromise *(^)(ObjectType))thenBlock onQueue:(dispatch_queue_t)queue;
 
-- (MSPromise *)catch:(MSPromise *(^)(NSError *))rejectErrorBlock;
+- (id)catch:(MSPromise *(^)(NSError *))rejectErrorBlock;
 
 - (void)dispose;
 

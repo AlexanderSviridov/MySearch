@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #import "MSNetworkManagerProtocol.h"
+#import "MSNetworkManager.h"
 
-@interface MSGithubNetworkManager : NSObject <MSNetworkManagerProtocol>
+@interface MSGithubNetworkManager : MSNetworkManager <MSNetworkManagerProtocol>
 
 - (void)searchRepositoriesWithQuery:(NSString *)queryString onCompleation:(void(^)())compleation;
 

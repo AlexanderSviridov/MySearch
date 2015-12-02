@@ -19,29 +19,12 @@
 
 - (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)searchWithQuery:(NSString *)query
 {
-    return [MSPromise newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfil, MSPromiseRejectBclock reject) {
-        NSString *quertyString = [NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@&sort=stars&order=desc", query ];
-        NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:quertyString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            NSError *__autoreleasing err;
-            if ( !data )
-            {
-                reject(error);
-                return;
-            }
-            id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
-            if ( err )
-            {
-                reject(err);
-                return;
-            }
-            NSArray *items = result[@"items"];
-            items = [MSSerializationManager serializedObjectFromArrayRepresentation:items class:[MSGithubSearchResultContainer class]];
-            fullfil( items );
-        }];
-        [dataTask resume];
-        return ^{
-            [dataTask cancel];
-        };
+    NSString *quertyString = [NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@&sort=stars&order=desc", query ];
+    quertyString = [quertyString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    return [[self getJSONObjectWithURL:[NSURL URLWithString:quertyString]] then:^id(NSDictionary *responce) {
+        NSArray *items = responce[@"items"];
+        items = [MSSerializationManager serializedObjectFromArrayRepresentation:items class:[MSGithubSearchResultContainer class]];
+        return items;
     }];
 }
 

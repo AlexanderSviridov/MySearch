@@ -82,17 +82,17 @@
     }];
 }
 
-- (instancetype)then:(MSPromise *(^)(id))thenBlock
+- (id)then:(MSPromise *(^)(id))thenBlock
 {
     return [self then:thenBlock onQueue:dispatch_get_main_queue()];
 }
 
-- (instancetype)thenOnBackground:(MSPromise *(^)(id))thenBlock
+- (id)thenOnBackground:(MSPromise *(^)(id))thenBlock
 {
     return [self then:thenBlock onQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
 }
 
-- (instancetype)then:(MSPromise *(^)(id))thenBlock onQueue:(dispatch_queue_t)queue
+- (id)then:(MSPromise *(^)(id))thenBlock onQueue:(dispatch_queue_t)queue
 {
     MSPromise *newPromise = [MSPromise new];
     [self addListengerWithPromise:newPromise onCompleation:^(id next, NSError *error, MSPromise *owner) {
@@ -102,10 +102,14 @@
                 MSPromise *nextPromise = thenBlock(next);
                 if ( !nextPromise )
                     [owner onValue:next error:nil];
-                else
+                else if ( [nextPromise isKindOfClass:[MSPromise class]] )
                     [nextPromise addListengerWithPromise:newPromise onCompleation:^(id next, NSError *error, MSPromise *owner) {
                         [owner onValue:next error:error];
                     }];
+                else if ( [nextPromise isKindOfClass:[NSError class]] )
+                    [owner onValue:nil error:(NSError *)nextPromise];
+                else
+                    [owner onValue:nextPromise error:nil];
             });
             return;
         }
@@ -115,7 +119,7 @@
     return newPromise;
 }
 
-- (MSPromise *)catch:(MSPromise *(^)(NSError *))rejectErrorBlock
+- (id)catch:(MSPromise *(^)(NSError *))rejectErrorBlock
 {
     MSPromise *newPromise = [MSPromise new];
     [self addListengerWithPromise:newPromise onCompleation:^(id next, NSError *error, MSPromise *owner) {
@@ -125,10 +129,14 @@
                 MSPromise *nextPromise = rejectErrorBlock(error);
                 if ( !newPromise )
                     [owner onValue:nil error:error];
-                else
+                else if ( [nextPromise isKindOfClass:[MSPromise class]] )
                     [nextPromise addListengerWithPromise:owner onCompleation:^(id next, NSError *error, MSPromise *owner) {
                         [owner onValue:next error:error];
                     }];
+                else if ( [nextPromise isKindOfClass:[NSError class]] )
+                    [owner onValue:nil error:(NSError *)nextPromise];
+                else
+                    [owner onValue:nextPromise error:nil];
             });
         }
         else
