@@ -41,11 +41,34 @@
 
 + (id)serializeObjectIntoRepresentationFromObject:(id)object
 {
-//    Class<MSSerializationObjectProtocol> objClass = [object class];
-//    
-//    NSDictionary *mapping = [objClass msSerializationMapping];
+    Class<MSSerializationObjectProtocol> objClass = [object class];
+
+    if ( [object isKindOfClass:[NSArray class]] )
+        return [(NSArray *)object linq_map:^id(id oldValue) {
+            return [self serializeObjectIntoRepresentationFromObject:oldValue];
+        }];
     
-    return nil;
+    if ( [(Class)objClass resolveClassMethod:@selector(msSerializationMapping)] && [(Class)objClass resolveClassMethod:@selector(msSerializationTransformerForKey:)] )
+    {
+        NSDictionary<NSString *, NSString *> *mapping = [objClass msSerializationMapping];
+        NSMutableDictionary *resultDictionary = [NSMutableDictionary new];
+        for ( NSString *key in mapping.allKeys )
+        {
+            NSString *value = mapping[key];
+            id objectValue = [object valueForKey:key];
+            NSValueTransformer *transformer = [objClass msSerializationTransformerForKey:key];
+            id resultValue = nil;
+            if ( transformer )
+                resultValue = [transformer reverseTransformedValue:objectValue];
+            else
+                resultValue = [self serializeObjectIntoRepresentationFromObject:objectValue];
+            if ( resultValue )
+                [resultDictionary setObject:resultDictionary forKey:value];
+        }
+        return [NSDictionary dictionaryWithDictionary:resultDictionary];
+    }
+    
+    return object;
 }
 
 @end
