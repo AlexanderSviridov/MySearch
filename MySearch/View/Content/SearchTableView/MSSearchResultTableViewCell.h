@@ -10,6 +10,13 @@
 
 #import "MSSearchResultCellProtocol.h"
 
+@class MSWebImageView;
+
 @interface MSSearchResultTableViewCell : UITableViewCell <MSSearchResultCellProtocol>
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property MSWebImageView *cellImageView;
+@property (weak, nonatomic) IBOutlet UIButton *ImageButton;
 
 @end

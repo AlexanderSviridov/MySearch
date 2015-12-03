@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MSErrorView : UIView
+#import "MSEdgeContainerView.h"
+
+@interface MSErrorView : MSEdgeContainerView
 
 @end

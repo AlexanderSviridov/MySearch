@@ -15,10 +15,10 @@
 
 @property id wrapperType;
 @property id kind;
-@property id artistId;
-@property id collectionId;
-@property id trackId;
-@property id artistName;
+@property NSInteger artistId;
+@property NSInteger collectionId;
+@property NSInteger trackId;
+@property NSString *artistName;
 @property id collectionName;
 @property id trackName;
 @property id collectionCensoredName;

@@ -10,6 +10,9 @@
 
 @interface MSEdgeContainerView : UIView
 
+@property UIView *containerView;
+@property UIEdgeInsets insets;
+
 + (instancetype)containerViewWithView:(UIView *)containerView withEdgeInsets:(UIEdgeInsets)insets;
 
 @end

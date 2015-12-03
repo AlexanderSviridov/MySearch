@@ -17,17 +17,16 @@
     id result = [(Class)contrainerClass new];
     for ( NSString *mappingKey in mappingDict )
     {
-        if ( [@"owner" isEqualToString:mappingKey] )
-            NSLog(@"");
         NSString *representationKey = mappingDict[mappingKey];
         id representationValue = representation[representationKey];
         NSValueTransformer *transformer = [contrainerClass msSerializationTransformerForKey:mappingKey];
+        id serializedValue = nil;
         if ( !transformer )
-        {
-            [result setValue:representationValue forKey:mappingKey];
-            continue;
-        }
-        [result setValue:[transformer transformedValue:representationValue] forKey:mappingKey];
+            serializedValue = representationValue;
+        else
+            serializedValue = [transformer transformedValue:representationValue];
+        if ( serializedValue )
+            [result setValue:serializedValue forKey:mappingKey];
     }
     return result;
 }
@@ -48,7 +47,7 @@
             return [self serializeObjectIntoRepresentationFromObject:oldValue];
         }];
     
-    if ( [(Class)objClass resolveClassMethod:@selector(msSerializationMapping)] && [(Class)objClass resolveClassMethod:@selector(msSerializationTransformerForKey:)] )
+    if ( [(Class)objClass respondsToSelector:@selector(msSerializationMapping)] && [(Class)objClass respondsToSelector:@selector(msSerializationTransformerForKey:)] )
     {
         NSDictionary<NSString *, NSString *> *mapping = [objClass msSerializationMapping];
         NSMutableDictionary *resultDictionary = [NSMutableDictionary new];
@@ -63,7 +62,7 @@
             else
                 resultValue = [self serializeObjectIntoRepresentationFromObject:objectValue];
             if ( resultValue )
-                [resultDictionary setObject:resultDictionary forKey:value];
+                [resultDictionary setObject:resultValue forKey:value];
         }
         return [NSDictionary dictionaryWithDictionary:resultDictionary];
     }

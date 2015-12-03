@@ -35,7 +35,7 @@
 
 + (NSArray *)serializedObjectFromArrayRepresentation:(NSArray *)arrayRepresentation class:(__unsafe_unretained Class<MSSerializationObjectProtocol>)containerClass;
 
-#warning reverse serializing not implemented
+//#warning reverse serializing not implemented
 + (id)serializeObjectIntoRepresentationFromObject:(id)object;
 
 @end

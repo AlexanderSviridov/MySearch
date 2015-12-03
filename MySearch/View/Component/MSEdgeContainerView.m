@@ -9,10 +9,6 @@
 #import "MSEdgeContainerView.h"
 
 @implementation MSEdgeContainerView
-{
-    UIView *_containerView;
-    UIEdgeInsets _edgeInsets;
-}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -24,8 +20,8 @@
 + (instancetype)containerViewWithView:(UIView *)containerView withEdgeInsets:(UIEdgeInsets)insets
 {
     MSEdgeContainerView *resultView = [self new];
-    resultView->_containerView = containerView;
-    resultView->_edgeInsets = insets;
+    resultView.containerView = containerView;
+    resultView.insets = insets;
     [resultView addSubview:containerView];
     return resultView;
 }
@@ -33,7 +29,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    _containerView.frame = UIEdgeInsetsInsetRect(self.bounds, _edgeInsets );
+    self.containerView.frame = UIEdgeInsetsInsetRect(self.bounds, self.insets );
 }
 
 @end

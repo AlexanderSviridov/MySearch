@@ -8,20 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "MSViewControllerManagerContainer.h"
+
 @protocol MSNetworkManagerProtocol;
-
-@interface MSViewControllerManagerContainer : NSObject
-
-@property id<MSNetworkManagerProtocol> networkManager;
-@property (copy) NSString *name;
-
-+ (instancetype)networkManagerWithManager:(id<MSNetworkManagerProtocol>)manager name:(NSString *)name;
-
-@end
+@class MSPreviewViewController;
 
 @interface MSViewController : UIViewController
 
 @property NSArray<MSViewControllerManagerContainer *> *networkManagers;
+@property MSPreviewViewController *previewController;
 
 @end
 

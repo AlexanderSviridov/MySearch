@@ -11,22 +11,29 @@
 #import "MSWebImageView.h"
 #import "MSSearchResultCellViewModel.h"
 #import "MSWebImageView.h"
+#import "MSEdgeContainerView.h"
 
 @interface MSSearchResultTableViewCell ()
-//@property (weak, nonatomic) IBOutlet MSImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet MSWebImageView *cellImageView;
+
+@property MSEdgeContainerView *edgeImageContainerView;
 
 @end
 
 @implementation MSSearchResultTableViewCell
 
-- (void)awakeFromNib {
+@synthesize imageButtonHavePressed;
+
+- (void)awakeFromNib
+{
     // Initialization code
+    self.cellImageView = [MSWebImageView new];
+    self.edgeImageContainerView = [MSEdgeContainerView containerViewWithView:self.cellImageView withEdgeInsets:UIEdgeInsetsZero];
+    self.edgeImageContainerView.userInteractionEnabled = NO;
+    [self.ImageButton addSubview:self.edgeImageContainerView];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
@@ -34,11 +41,37 @@
 
 - (void)configureCellFromModel:(id<MSSearchResultCellViewModel>)cellModel
 {
-//    self.imageView.imageURL = [cellModel cellViewModelImageURL];
     self.titleLabel.text = [cellModel cellViewModelTitle];
     self.descriptionLabel.text = [cellModel cellViewModelDetail];
     self.cellImageView.imageURL = [cellModel cellViewModelImageURL];
     self.cellImageView.backgroundColor = [UIColor clearColor];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.edgeImageContainerView.frame = self.ImageButton.bounds;
+}
+
+- (IBAction)ImageButtonDidPressed:(UIButton *)sender
+{
+    if ( self.imageButtonHavePressed )
+        self.imageButtonHavePressed();
+}
+
+- (MSWebImageView *)unattachImageViewFromCell
+{
+    MSWebImageView *imageView = self.cellImageView;
+    self.edgeImageContainerView.containerView = nil;
+    self.cellImageView = nil;
+    return imageView;
+}
+
+- (void)attachImageView:(MSWebImageView *)imageView
+{
+    self.edgeImageContainerView.containerView = imageView;
+    [self.edgeImageContainerView addSubview:imageView];
+    self.cellImageView = imageView;
 }
 
 @end

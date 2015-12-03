@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @protocol MSSearchResultCellViewModel;
+@protocol MSSearchResultCellProtocol;
 
 static CGFloat kMSSearchResultTableViewCellHeight = 100.;
 
 @interface MSSearchResultTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) NSArray<id<MSSearchResultCellViewModel>> *cellArray;
+@property (copy) void(^imageButtonHavePressedWithModel)(id<MSSearchResultCellViewModel> model, id<MSSearchResultCellProtocol> cell);
 
 @end

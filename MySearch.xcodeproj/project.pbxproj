@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B602404F1C10837000723AEE /* MSLoadingScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = B602404E1C10837000723AEE /* MSLoadingScreenView.m */; };
 		B640C4A51C084B650042EFE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4A41C084B650042EFE6 /* main.m */; };
 		B640C4A81C084B650042EFE6 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4A71C084B650042EFE6 /* MSAppDelegate.m */; };
-		B640C4AE1C084B650042EFE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B640C4AC1C084B650042EFE6 /* Main.storyboard */; };
 		B640C4B01C084B650042EFE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B640C4AF1C084B650042EFE6 /* Assets.xcassets */; };
 		B640C4B31C084B650042EFE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B640C4B11C084B650042EFE6 /* LaunchScreen.storyboard */; };
-		B640C4BE1C084B650042EFE6 /* MySearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4BD1C084B650042EFE6 /* MySearchTests.m */; };
 		B640C4C91C084B650042EFE6 /* MySearchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4C81C084B650042EFE6 /* MySearchUITests.m */; };
 		B640C4D91C084D540042EFE6 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4D81C084D540042EFE6 /* MSViewController.m */; };
 		B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B640C4E51C085E460042EFE6 /* MSSerializationManager.m */; };
@@ -21,6 +20,13 @@
 		B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93BE1C0C4CA3007E4560 /* MSImageCacheManager.m */; };
 		B67A93C81C0C552E007E4560 /* MSPromiseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93C71C0C552E007E4560 /* MSPromiseTest.m */; };
 		B67A93CF1C0C9F58007E4560 /* MSPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A93CE1C0C9F58007E4560 /* MSPromise.m */; };
+		B6C798011C102F6500047170 /* MSSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C798001C102F6500047170 /* MSSerializationTests.m */; };
+		B6C798041C1047B600047170 /* MSPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C798031C1047B600047170 /* MSPreviewViewController.m */; };
+		B6C7980F1C10524900047170 /* MSDependencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C7980E1C10524900047170 /* MSDependencyManager.m */; };
+		B6C798121C10532F00047170 /* MSViewControllerManagerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C798111C10532F00047170 /* MSViewControllerManagerContainer.m */; };
+		B6C7981C1C1069A300047170 /* UIViewController+ShowModal.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C7981B1C1069A300047170 /* UIViewController+ShowModal.m */; };
+		B6C7981F1C1069F200047170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C7981D1C1069F200047170 /* Main.storyboard */; };
+		B6C798221C106A3500047170 /* MSPreviewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C798211C106A3500047170 /* MSPreviewContentView.m */; };
 		B6CCA04E1C0DECC700ABF80B /* white_close_x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6CCA04D1C0DECC700ABF80B /* white_close_x.png */; };
 		B6D334551C0EE0F7002F3EF3 /* MSErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334521C0EE0F7002F3EF3 /* MSErrorView.m */; };
 		B6D334561C0EE0F7002F3EF3 /* MSWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334541C0EE0F7002F3EF3 /* MSWebImageView.m */; };
@@ -57,16 +63,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B602404D1C10837000723AEE /* MSLoadingScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLoadingScreenView.h; sourceTree = "<group>"; };
+		B602404E1C10837000723AEE /* MSLoadingScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLoadingScreenView.m; sourceTree = "<group>"; };
 		B640C4A01C084B650042EFE6 /* MySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B640C4A41C084B650042EFE6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B640C4A61C084B650042EFE6 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
 		B640C4A71C084B650042EFE6 /* MSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSAppDelegate.m; sourceTree = "<group>"; };
-		B640C4AD1C084B650042EFE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B640C4AF1C084B650042EFE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B640C4B21C084B650042EFE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B640C4B41C084B650042EFE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B640C4B91C084B650042EFE6 /* MySearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B640C4BD1C084B650042EFE6 /* MySearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySearchTests.m; sourceTree = "<group>"; };
 		B640C4BF1C084B650042EFE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B640C4C41C084B650042EFE6 /* MySearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B640C4C81C084B650042EFE6 /* MySearchUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySearchUITests.m; sourceTree = "<group>"; };
@@ -84,6 +90,18 @@
 		B67A93C71C0C552E007E4560 /* MSPromiseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromiseTest.m; sourceTree = "<group>"; };
 		B67A93CD1C0C9F58007E4560 /* MSPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPromise.h; sourceTree = "<group>"; };
 		B67A93CE1C0C9F58007E4560 /* MSPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromise.m; sourceTree = "<group>"; };
+		B6C798001C102F6500047170 /* MSSerializationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSerializationTests.m; sourceTree = "<group>"; };
+		B6C798021C1047B600047170 /* MSPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPreviewViewController.h; sourceTree = "<group>"; };
+		B6C798031C1047B600047170 /* MSPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPreviewViewController.m; sourceTree = "<group>"; };
+		B6C7980D1C10524900047170 /* MSDependencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDependencyManager.h; sourceTree = "<group>"; };
+		B6C7980E1C10524900047170 /* MSDependencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDependencyManager.m; sourceTree = "<group>"; };
+		B6C798101C10532F00047170 /* MSViewControllerManagerContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSViewControllerManagerContainer.h; sourceTree = "<group>"; };
+		B6C798111C10532F00047170 /* MSViewControllerManagerContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewControllerManagerContainer.m; sourceTree = "<group>"; };
+		B6C7981A1C1069A300047170 /* UIViewController+ShowModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowModal.h"; sourceTree = "<group>"; };
+		B6C7981B1C1069A300047170 /* UIViewController+ShowModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowModal.m"; sourceTree = "<group>"; };
+		B6C7981E1C1069F200047170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B6C798201C106A3500047170 /* MSPreviewContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPreviewContentView.h; sourceTree = "<group>"; };
+		B6C798211C106A3500047170 /* MSPreviewContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPreviewContentView.m; sourceTree = "<group>"; };
 		B6CCA04D1C0DECC700ABF80B /* white_close_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_close_x.png; sourceTree = "<group>"; };
 		B6D334511C0EE0F7002F3EF3 /* MSErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSErrorView.h; sourceTree = "<group>"; };
 		B6D334521C0EE0F7002F3EF3 /* MSErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSErrorView.m; sourceTree = "<group>"; };
@@ -167,6 +185,7 @@
 		B640C4A21C084B650042EFE6 /* MySearch */ = {
 			isa = PBXGroup;
 			children = (
+				B6C7980C1C10523900047170 /* Dependency */,
 				B6CCA04C1C0DECBD00ABF80B /* Resourses */,
 				B640C4EA1C0863FD0042EFE6 /* Helpers */,
 				B640C4DA1C084D7B0042EFE6 /* Model */,
@@ -174,7 +193,7 @@
 				B640C4D61C084D440042EFE6 /* Controller */,
 				B640C4A61C084B650042EFE6 /* MSAppDelegate.h */,
 				B640C4A71C084B650042EFE6 /* MSAppDelegate.m */,
-				B640C4AC1C084B650042EFE6 /* Main.storyboard */,
+				B6C7981D1C1069F200047170 /* Main.storyboard */,
 				B640C4AF1C084B650042EFE6 /* Assets.xcassets */,
 				B640C4B11C084B650042EFE6 /* LaunchScreen.storyboard */,
 				B640C4B41C084B650042EFE6 /* Info.plist */,
@@ -194,8 +213,8 @@
 		B640C4BC1C084B650042EFE6 /* MySearchTests */ = {
 			isa = PBXGroup;
 			children = (
-				B640C4BD1C084B650042EFE6 /* MySearchTests.m */,
 				B67A93C71C0C552E007E4560 /* MSPromiseTest.m */,
+				B6C798001C102F6500047170 /* MSSerializationTests.m */,
 				B640C4BF1C084B650042EFE6 /* Info.plist */,
 			);
 			path = MySearchTests;
@@ -215,6 +234,8 @@
 			children = (
 				B640C4D71C084D540042EFE6 /* MSViewController.h */,
 				B640C4D81C084D540042EFE6 /* MSViewController.m */,
+				B6C798021C1047B600047170 /* MSPreviewViewController.h */,
+				B6C798031C1047B600047170 /* MSPreviewViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -253,6 +274,8 @@
 		B640C4EA1C0863FD0042EFE6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B6C7981A1C1069A300047170 /* UIViewController+ShowModal.h */,
+				B6C7981B1C1069A300047170 /* UIViewController+ShowModal.m */,
 				B640C4EB1C0864270042EFE6 /* NSArray+MSLinqExtension.h */,
 				B640C4EC1C0864270042EFE6 /* NSArray+MSLinqExtension.m */,
 			);
@@ -275,6 +298,17 @@
 				B67A93CE1C0C9F58007E4560 /* MSPromise.m */,
 			);
 			path = Promises;
+			sourceTree = "<group>";
+		};
+		B6C7980C1C10523900047170 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				B6C7980D1C10524900047170 /* MSDependencyManager.h */,
+				B6C7980E1C10524900047170 /* MSDependencyManager.m */,
+				B6C798101C10532F00047170 /* MSViewControllerManagerContainer.h */,
+				B6C798111C10532F00047170 /* MSViewControllerManagerContainer.m */,
+			);
+			path = Dependency;
 			sourceTree = "<group>";
 		};
 		B6CCA04C1C0DECBD00ABF80B /* Resourses */ = {
@@ -338,6 +372,10 @@
 			isa = PBXGroup;
 			children = (
 				B6D334781C0EF45B002F3EF3 /* SearchTableView */,
+				B6C798201C106A3500047170 /* MSPreviewContentView.h */,
+				B6C798211C106A3500047170 /* MSPreviewContentView.m */,
+				B602404D1C10837000723AEE /* MSLoadingScreenView.h */,
+				B602404E1C10837000723AEE /* MSLoadingScreenView.m */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -491,10 +529,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6CCA04E1C0DECC700ABF80B /* white_close_x.png in Resources */,
+				B6C7981F1C1069F200047170 /* Main.storyboard in Resources */,
 				B6D334821C0EFBF1002F3EF3 /* search-icon-hi.png in Resources */,
 				B640C4B31C084B650042EFE6 /* LaunchScreen.storyboard in Resources */,
 				B640C4B01C084B650042EFE6 /* Assets.xcassets in Resources */,
-				B640C4AE1C084B650042EFE6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,21 +557,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6C798121C10532F00047170 /* MSViewControllerManagerContainer.m in Sources */,
+				B602404F1C10837000723AEE /* MSLoadingScreenView.m in Sources */,
+				B6C798221C106A3500047170 /* MSPreviewContentView.m in Sources */,
 				B6D334661C0EE3AE002F3EF3 /* MSiTunesNetworkManager.m in Sources */,
 				B6D334971C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m in Sources */,
 				B6D334931C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.m in Sources */,
 				B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */,
 				B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */,
 				B67A93CF1C0C9F58007E4560 /* MSPromise.m in Sources */,
+				B6C7981C1C1069A300047170 /* UIViewController+ShowModal.m in Sources */,
 				B6D334561C0EE0F7002F3EF3 /* MSWebImageView.m in Sources */,
 				B640C4A81C084B650042EFE6 /* MSAppDelegate.m in Sources */,
 				B640C4D91C084D540042EFE6 /* MSViewController.m in Sources */,
 				B6D3348F1C0F1790002F3EF3 /* MSNetworkManager.m in Sources */,
 				B6D3348B1C0F062F002F3EF3 /* MSGithubOwnerContainer.m in Sources */,
+				B6C7980F1C10524900047170 /* MSDependencyManager.m in Sources */,
 				B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */,
 				B6D334851C0EFDBD002F3EF3 /* MSEdgeContainerView.m in Sources */,
 				B6D334551C0EE0F7002F3EF3 /* MSErrorView.m in Sources */,
 				B640C4A51C084B650042EFE6 /* main.m in Sources */,
+				B6C798041C1047B600047170 /* MSPreviewViewController.m in Sources */,
 				B6D3348C1C0F062F002F3EF3 /* MSGithubSearchResultContainer.m in Sources */,
 				B6D334801C0EF45B002F3EF3 /* MSSearchResultTableViewCell.m in Sources */,
 				B6D3349A1C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m in Sources */,
@@ -548,7 +592,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B640C4BE1C084B650042EFE6 /* MySearchTests.m in Sources */,
+				B6C798011C102F6500047170 /* MSSerializationTests.m in Sources */,
 				B67A93C81C0C552E007E4560 /* MSPromiseTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,20 +621,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B640C4AC1C084B650042EFE6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B640C4AD1C084B650042EFE6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B640C4B11C084B650042EFE6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B640C4B21C084B650042EFE6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B6C7981D1C1069F200047170 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B6C7981E1C1069F200047170 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

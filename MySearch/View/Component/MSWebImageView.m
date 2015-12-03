@@ -24,12 +24,27 @@
     self = [super initWithCoder:aDecoder];
     if ( self )
     {
-        _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        _spinner.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
-        _imageView = [[UIImageView alloc] init];
-        _errorView = [MSErrorView new];
+        [self loadViews];
     }
     return self;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self loadViews];
+    }
+    return self;
+}
+
+- (void)loadViews
+{
+    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    _spinner.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
+    _imageView = [[UIImageView alloc] init];
+    _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _errorView = [MSErrorView new];
 }
 
 - (void)setImageURL:(NSURL *)imageURL
@@ -62,10 +77,17 @@
         return nil;
     }] catch:^MSPromise *(NSError *error) {
         NSLog(@"%@", error );
-//        [_spinner stopAnimating];
         [UIView transitionFromView:_spinner toView:_errorView duration:.3 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut completion:nil];
         return nil;
     }];
+}
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    _spinner.frame = self.bounds;
+    _imageView.frame = self.bounds;
+    _errorView.frame = self.bounds;
 }
 
 - (void)layoutSubviews

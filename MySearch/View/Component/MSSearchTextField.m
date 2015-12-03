@@ -43,7 +43,7 @@
             imageView.userInteractionEnabled = NO;
             imageView;
         }) withEdgeInsets:(UIEdgeInsets){ .top = 15, .left = 15, .right = 15, .bottom = 15 }];
-        leftImageView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.4];
+        leftImageView.backgroundColor = [UIColor colorWithRed:0.1738 green:0.4198 blue:0.9984 alpha:1.0];
         leftImageView.userInteractionEnabled = NO;
         self.leftView = leftImageView;
         self.leftViewMode = UITextFieldViewModeAlways;

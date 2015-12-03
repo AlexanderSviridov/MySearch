@@ -54,7 +54,14 @@ static NSString *kMSSearchResultTableViewLeftCellIdentifier = @"kMSLeftSearchRes
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell<MSSearchResultCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:indexPath.row%2? kMSSearchResultTableViewRightCellIdentifier : kMSSearchResultTableViewLeftCellIdentifier forIndexPath:indexPath];
-    [cell configureCellFromModel:_cellArray[indexPath.row]];
+    id<MSSearchResultCellViewModel> model = _cellArray[indexPath.row];
+    [cell configureCellFromModel:model];
+    __weak MSSearchResultTableView *self_weak = self;
+    __weak UITableViewCell<MSSearchResultCellProtocol> *cell_weak = cell;
+    [cell setImageButtonHavePressed:^{
+        if ( self_weak.imageButtonHavePressedWithModel )
+            self_weak.imageButtonHavePressedWithModel(model, cell_weak);
+    }];
     return cell;
 }
 
