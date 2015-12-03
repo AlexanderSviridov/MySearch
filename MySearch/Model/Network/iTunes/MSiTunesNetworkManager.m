@@ -15,6 +15,7 @@
 
 @property NSInteger page;
 @property NSString *query;
+@property MSPromise *currentPromise;
 
 @end
 
@@ -33,9 +34,11 @@
 
 - (MSPromise<id<MSSearchResultContainerProtocol>> *)searchWithQuery:(NSString *)query
 {
+    if ( self.page == 0 && [self.query isEqualToString:query] && self.currentPromise )
+        return self.currentPromise;
     self.page = 0;
     self.query = query;
-    return [[self searchEntitiesWithQuery:query page:0] catch:^MSPromise *(NSError *error) {
+    return self.currentPromise = [[self searchEntitiesWithQuery:query page:0] catch:^MSPromise *(NSError *error) {
         self.query = nil;
         return nil;
     }];

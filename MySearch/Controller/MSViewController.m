@@ -55,22 +55,18 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
             [cell attachImageView:previewController.transferImageView];
         }];
     }];
-    [self.tableView setGetMoreCells:^(MSSearchResultTableView *tableView) {
-        [[[self_weak.currentNetworkManager getMoreResults] then:^MSPromise *(id<MSSearchResultContainerProtocol> result) {
-            if ( !result.cellArray.count )
-            {
-                self_weak.tableView.isAllCells = YES;
-                self_weak.tableView.cellArray = self_weak.tableView.cellArray;
-                return nil;
-            }
-            self_weak.tableView.isAllCells = result.isIncompleteResult;
-            [self_weak.tableView insertCells:result.cellArray];
-            return nil;
-        }] catch:^MSPromise *(NSError *error) {
-            self_weak.tableView.isAllCells = YES;
-            self_weak.tableView.cellArray = self_weak.tableView.cellArray;
-            return nil;
-        }];
+    [[[[self.tableView getMoreCells] then:^MSPromise *(MSSearchResultTableView *tableview) {
+        return [self_weak.currentNetworkManager getMoreResults];
+    }] then:^id(id<MSSearchResultContainerProtocol> result) {
+        if ( !result.cellArray.count )
+            return [NSError errorWithDomain:@"" code:0 userInfo:nil];
+        self_weak.tableView.isAllCells = result.isIncompleteResult;
+        [self_weak.tableView insertCells:result.cellArray];
+        return nil;
+    }] catch:^MSPromise *(NSError *error) {
+        self_weak.tableView.isAllCells = YES;
+        self_weak.tableView.cellArray = self_weak.tableView.cellArray;
+        return nil;
     }];
 }
 
@@ -83,15 +79,20 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
 - (IBAction)textfieldAction:(UITextField *)sender
 {
     [sender resignFirstResponder];
-    [self.loadingScreen startAnimationWithQuery:sender.text serviceName:self.serviceName];
-    [[[self.currentNetworkManager searchWithQuery:sender.text] then:^MSPromise *(id<MSSearchResultContainerProtocol> result) {
-        self.tableView.isAllCells = result.isIncompleteResult;
-        self.tableView.cellArray = result.cellArray;
-        [self.loadingScreen stopAnimating];
+    MSPromise *promise = [[[self.currentNetworkManager searchWithQuery:sender.text] then:^MSPromise *(id<MSSearchResultContainerProtocol> result) {
+        if ( !result.cellArray.count )
+        {
+            self.tableView.isAllCells = YES;
+            self.tableView.cellArray = @[];
+        }
+        else
+        {
+            self.tableView.isAllCells = result.isIncompleteResult;
+            self.tableView.cellArray = result.cellArray;
+        }
         return nil;
     }] catch:^MSPromise *(NSError *error) {
         self.tableView.cellArray = @[];
-        [self.loadingScreen stopAnimating];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [alert dismissViewControllerAnimated:YES completion:nil];
@@ -99,6 +100,19 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
         [self presentViewController:alert animated:YES completion:nil];
         return nil;
     }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ( !promise.isCompleated )
+        {
+            [self.loadingScreen startAnimationWithQuery:sender.text serviceName:self.serviceName];
+            [[promise then:^MSPromise *(id value) {
+                [self.loadingScreen stopAnimating];
+                return nil;
+            }] catch:^MSPromise *(NSError *error) {
+                [self.loadingScreen stopAnimating];
+                return nil;
+            }];
+        }
+    });
 }
 
 - (IBAction)topSegmentControlValueChanged:(UISegmentedControl *)sender

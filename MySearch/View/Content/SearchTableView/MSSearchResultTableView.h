@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "MSPromise.h"
+
 @protocol MSSearchResultCellViewModel;
 @protocol MSSearchResultCellProtocol;
 
@@ -18,8 +20,11 @@ static CGFloat kMSSearchResultTableViewCellHeight = 100.;
 @property BOOL isAllCells;
 
 @property (nonatomic) NSArray<id<MSSearchResultCellViewModel>> *cellArray;
+
 @property (copy) void(^imageButtonHavePressedWithModel)(id<MSSearchResultCellViewModel> model, id<MSSearchResultCellProtocol> cell);
-@property (copy) void(^getMoreCells)(MSSearchResultTableView *);
+//@property (copy) void(^getMoreCells)(MSSearchResultTableView *);
+
+- (MSPromise<MSSearchResultTableView *> *)getMoreCells;
 
 - (void)insertCells:(NSArray<id<MSSearchResultCellViewModel>> *)cells;
 

@@ -11,6 +11,7 @@
 #import "MSSearchResultCellProtocol.h"
 #import "NSArray+MSLinqExtension.h"
 #import "MSSearchResultEmptyTableViewCell.h"
+#import "MSPromise.h"
 
 @interface MSSearchResultTableView ()
 
@@ -23,6 +24,8 @@ static NSString *kMSSearchResultTableViewEmptyCellIndentufuer = @"kMSSearchResul
 @implementation MSSearchResultTableView
 {
     UIEdgeInsets _defaultInset;
+    MSPromiseFullfillBlock _getMoreCellsBlock;
+    MSPromise *_getMoreCellsPromise;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -42,11 +45,13 @@ static NSString *kMSSearchResultTableViewEmptyCellIndentufuer = @"kMSSearchResul
 
 - (void)setCellArray:(NSArray<id<MSSearchResultCellViewModel>> *)cellArray
 {
-    [self beginUpdates];
-    [self reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    _cellArray = [cellArray copy];
-    [self endUpdates];
-    [self layoutSubviews];
+    @synchronized(self) {
+        [self beginUpdates];
+        [self reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        _cellArray = [cellArray copy];
+        [self endUpdates];
+        [self layoutSubviews];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -58,16 +63,29 @@ static NSString *kMSSearchResultTableViewEmptyCellIndentufuer = @"kMSSearchResul
 
 - (void)insertCells:(NSArray<id<MSSearchResultCellViewModel>> *)cells
 {
-    [self beginUpdates];
-//    [self reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    __block NSInteger index = _cellArray.count;
-    [self insertRowsAtIndexPaths:[NSArray arrayWithBlock:^id{
-        return [NSIndexPath indexPathForRow:index++ inSection:0];
-    } count:cells.count] withRowAnimation:UITableViewRowAnimationFade];
-    _cellArray = [_cellArray arrayByAddingObjectsFromArray:cells];
-    [self endUpdates];
-    [self layoutSubviews];
+    @synchronized(self) {
+        [self beginUpdates];
+        __block NSInteger index = _cellArray.count;
+        [self insertRowsAtIndexPaths:[NSArray arrayWithBlock:^id{
+            return [NSIndexPath indexPathForRow:index++ inSection:0];
+        } count:cells.count] withRowAnimation:UITableViewRowAnimationFade];
+        _cellArray = [_cellArray arrayByAddingObjectsFromArray:cells];
+        [self endUpdates];
+        [self layoutSubviews];
+    }
     
+}
+
+- (MSPromise<MSSearchResultTableView *> *)getMoreCells
+{
+    if ( !_getMoreCellsPromise )
+        _getMoreCellsPromise = [MSPromise newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfil, MSPromiseRejectBclock reject) {
+            _getMoreCellsBlock = fullfil;
+            return ^{
+                _getMoreCellsBlock = nil;
+            };
+        }];
+    return _getMoreCellsPromise;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,8 +94,8 @@ static NSString *kMSSearchResultTableViewEmptyCellIndentufuer = @"kMSSearchResul
     {
         MSSearchResultEmptyTableViewCell *emptyCell = [tableView dequeueReusableCellWithIdentifier:kMSSearchResultTableViewEmptyCellIndentufuer forIndexPath:indexPath];
         [emptyCell.spiner startAnimating];
-        if ( self.getMoreCells )
-            self.getMoreCells(self);
+        if ( _getMoreCellsBlock )
+            _getMoreCellsBlock(self);
         return emptyCell;
     }
     UITableViewCell<MSSearchResultCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:indexPath.row%2? kMSSearchResultTableViewRightCellIdentifier : kMSSearchResultTableViewLeftCellIdentifier forIndexPath:indexPath];

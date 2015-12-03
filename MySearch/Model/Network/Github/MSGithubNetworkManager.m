@@ -16,6 +16,7 @@
 
 @property NSInteger page;
 @property NSString *query;
+@property MSPromise *currentPromise;
 
 @end
 
@@ -27,7 +28,6 @@
     if ( page )
         quertyString = [quertyString stringByAppendingString:[NSString stringWithFormat:@"&page=%d", (int)page + 1]];
     quertyString = [quertyString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, quertyString);
     return [[self getJSONObjectWithURL:[NSURL URLWithString:quertyString]] then:^id(NSDictionary *responce) {
         return [MSSerializationManager serializedObjectFromRepresentation:responce class:[MSGithubSearchResultContainer class]];
     }];
@@ -36,8 +36,10 @@
 - (MSPromise<id<MSSearchResultContainerProtocol>> *)searchWithQuery:(NSString *)query
 {
     self.query = query;
+    if ( [self.query isEqualToString:query] && self.page == 0 && self.currentPromise )
+        return self.currentPromise;
     self.page = 0;
-    return [self searchGithubRepositoryWithQuery:query page:0];
+    return self.currentPromise = [self searchGithubRepositoryWithQuery:query page:0];
 }
 
 - (MSPromise<id<MSSearchResultContainerProtocol>> *)getMoreResults

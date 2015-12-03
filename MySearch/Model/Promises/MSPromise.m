@@ -32,7 +32,6 @@
 @interface MSPromise ()
 
 @property NSMutableArray<MSPromiseListengerContainer *> *listengers;
-@property BOOL isCompleated;
 @property id compleatedValue;
 @property NSError *compleatedError;
 @property (weak) MSPromise *prevPromise;
@@ -184,14 +183,14 @@
 
 - (void)onValue:(id)prevValue error:(NSError *)error
 {
-    self.isCompleated = YES;
+    _isCompleated = YES;
     self.compleatedError = error;
     self.compleatedValue = prevValue;
     [self.listengers enumerateObjectsUsingBlock:^(MSPromiseListengerContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ( !error )
-            obj.onCompleate(prevValue,nil, obj.promise );
-        else
+        if ( error )
             obj.onCompleate(nil, error, obj.promise );
+        if ( prevValue )
+            obj.onCompleate(prevValue,nil, obj.promise );
     }];
 }
 
