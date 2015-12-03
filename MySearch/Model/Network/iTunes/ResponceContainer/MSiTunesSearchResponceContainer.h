@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 #import "MSSerializationManager.h"
+#import "MSSearchResultContainerProtocol.h"
 
 @class MSiTunesSearchResponceEntityContainer;
 
-@interface MSiTunesSearchResponceContainer : NSObject <MSSerializationObjectProtocol>
+@interface MSiTunesSearchResponceContainer : NSObject <MSSerializationObjectProtocol, MSSearchResultContainerProtocol>
 
 @property NSInteger resultCount;
 @property NSArray<MSiTunesSearchResponceEntityContainer *> *results;

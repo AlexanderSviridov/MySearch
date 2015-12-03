@@ -15,6 +15,6 @@
 
 @interface MSiTunesNetworkManager : MSNetworkManager <MSNetworkManagerProtocol>
 
-- (MSPromise<MSiTunesSearchResponceContainer *> *)searchEntitiesWithQuery:(NSString *)query;
+- (MSPromise<MSiTunesSearchResponceContainer *> *)searchEntitiesWithQuery:(NSString *)query page:(NSInteger)page;
 
 @end

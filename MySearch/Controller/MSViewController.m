@@ -17,6 +17,7 @@
 #import "MSPreviewViewController.h"
 #import "MSSearchResultCellProtocol.h"
 #import "MSLoadingScreenView.h"
+#import "MSSearchResultContainerProtocol.h"
 
 static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSeque";
 
@@ -46,11 +47,29 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
     [self.topSegmentControl setSelectedSegmentIndex:0];
     _currentNetworkManager = self.networkManagers[0].networkManager;
     self.serviceName = self.networkManagers[0].name;
+    __weak MSViewController *self_weak = self;
     [self.tableView setImageButtonHavePressedWithModel:^(id<MSSearchResultCellViewModel> model, id<MSSearchResultCellProtocol> cell) {
-        [self.previewController showModalWithDuration:.3];
-        self.previewController.transferImageView = [cell unattachImageViewFromCell];
-        [self.previewController setCompleationHandler:^(MSPreviewViewController *previewController) {
+        [self_weak.previewController showModalWithDuration:.3];
+        self_weak.previewController.transferImageView = [cell unattachImageViewFromCell];
+        [self_weak.previewController setCompleationHandler:^(MSPreviewViewController *previewController) {
             [cell attachImageView:previewController.transferImageView];
+        }];
+    }];
+    [self.tableView setGetMoreCells:^(MSSearchResultTableView *tableView) {
+        [[[self_weak.currentNetworkManager getMoreResults] then:^MSPromise *(id<MSSearchResultContainerProtocol> result) {
+            if ( !result.cellArray.count )
+            {
+                self_weak.tableView.isAllCells = YES;
+                self_weak.tableView.cellArray = self_weak.tableView.cellArray;
+                return nil;
+            }
+            self_weak.tableView.isAllCells = result.isIncompleteResult;
+            [self_weak.tableView insertCells:result.cellArray];
+            return nil;
+        }] catch:^MSPromise *(NSError *error) {
+            self_weak.tableView.isAllCells = YES;
+            self_weak.tableView.cellArray = self_weak.tableView.cellArray;
+            return nil;
         }];
     }];
 }
@@ -65,8 +84,9 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
 {
     [sender resignFirstResponder];
     [self.loadingScreen startAnimationWithQuery:sender.text serviceName:self.serviceName];
-    [[[self.currentNetworkManager searchWithQuery:sender.text] then:^MSPromise *(NSArray<id<MSSearchResultCellViewModel>> *items) {
-        self.tableView.cellArray = items;
+    [[[self.currentNetworkManager searchWithQuery:sender.text] then:^MSPromise *(id<MSSearchResultContainerProtocol> result) {
+        self.tableView.isAllCells = result.isIncompleteResult;
+        self.tableView.cellArray = result.cellArray;
         [self.loadingScreen stopAnimating];
         return nil;
     }] catch:^MSPromise *(NSError *error) {

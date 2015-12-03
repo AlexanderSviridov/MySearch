@@ -11,8 +11,10 @@
 #import "MSNetworkManagerProtocol.h"
 #import "MSNetworkManager.h"
 
+@class MSGithubSearchResultContainer;
+
 @interface MSGithubNetworkManager : MSNetworkManager <MSNetworkManagerProtocol>
 
-- (void)searchRepositoriesWithQuery:(NSString *)queryString onCompleation:(void(^)())compleation;
+- (MSPromise<MSGithubSearchResultContainer *> *)searchGithubRepositoryWithQuery:(NSString *)query page:(NSInteger)page;
 
 @end

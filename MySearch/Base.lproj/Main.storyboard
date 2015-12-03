@@ -146,6 +146,33 @@
                                             <outlet property="titleLabel" destination="Y0F-M3-CLY" id="zMN-rX-SjR"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kMSSearchResultTableViewEmptyCellIndentufuer" id="rM7-Py-qrR" customClass="MSSearchResultEmptyTableViewCell">
+                                        <rect key="frame" x="0.0" y="342" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rM7-Py-qrR" id="OGe-EY-u8b">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mdg-IK-FJI">
+                                                    <rect key="frame" x="177" y="12" width="20" height="20"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="ege-1g-IbB"/>
+                                                        <constraint firstAttribute="width" constant="20" id="tUf-MN-44b"/>
+                                                    </constraints>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="mdg-IK-FJI" firstAttribute="centerX" secondItem="OGe-EY-u8b" secondAttribute="centerX" id="L3U-VQ-Gz0"/>
+                                                <constraint firstItem="mdg-IK-FJI" firstAttribute="top" secondItem="OGe-EY-u8b" secondAttribute="topMargin" constant="4" id="hMn-za-j8f"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="spiner" destination="mdg-IK-FJI" id="Hdj-kE-1gV"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZb-gK-b1e" userLabel="HeaderView">

@@ -10,14 +10,12 @@
 
 #import "MSPromise.h"
 
-@protocol MSSearchResultCellViewModel;
+@protocol MSSearchResultContainerProtocol;
 
 @protocol MSNetworkManagerProtocol <NSObject>
 
-- (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)searchWithQuery:(NSString *)query;
+- (MSPromise<id<MSSearchResultContainerProtocol>> *)searchWithQuery:(NSString *)query;
 
-- (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)getMoreResults;
-
-- (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)update;
+- (MSPromise<id<MSSearchResultContainerProtocol>> *)getMoreResults;
 
 @end

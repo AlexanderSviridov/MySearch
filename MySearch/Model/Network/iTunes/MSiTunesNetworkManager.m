@@ -11,22 +11,40 @@
 #import "MSSerializationManager.h"
 #import "MSiTunesSearchResponceContainer.h"
 
+@interface MSiTunesNetworkManager ()
+
+@property NSInteger page;
+@property NSString *query;
+
+@end
+
 @implementation MSiTunesNetworkManager
 
-- (MSPromise *)searchEntitiesWithQuery:(NSString *)query;
+- (MSPromise *)searchEntitiesWithQuery:(NSString *)query page:(NSInteger)page;
 {
-//    https://itunes.apple.com/search?term=jack+johnson
     NSString *urlString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@", [query stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
+    if ( page )
+        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&offset=%d", (int)page * 50 ]];
     return [[self getJSONObjectWithURL:[NSURL URLWithString:urlString]] then:^id(NSDictionary *resultDictionary) {
         return [MSSerializationManager serializedObjectFromRepresentation:resultDictionary class:[MSiTunesSearchResponceContainer class]];
     }];
 }
 
-- (MSPromise<NSArray<id<MSSearchResultCellViewModel>> *> *)searchWithQuery:(NSString *)query
+
+- (MSPromise<id<MSSearchResultContainerProtocol>> *)searchWithQuery:(NSString *)query
 {
-    return [[self searchEntitiesWithQuery:query] then:^id(MSiTunesSearchResponceContainer *responce) {
-        return responce.results;
+    self.page = 0;
+    self.query = query;
+    return [[self searchEntitiesWithQuery:query page:0] catch:^MSPromise *(NSError *error) {
+        self.query = nil;
+        return nil;
     }];
+}
+
+- (MSPromise<id<MSSearchResultContainerProtocol>> *)getMoreResults
+{
+    self.page ++;
+    return [self searchEntitiesWithQuery:self.query page:self.page];
 }
 
 @end

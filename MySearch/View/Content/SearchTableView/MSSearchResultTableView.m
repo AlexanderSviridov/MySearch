@@ -10,6 +10,7 @@
 #import "MSSearchResultCellViewModel.h"
 #import "MSSearchResultCellProtocol.h"
 #import "NSArray+MSLinqExtension.h"
+#import "MSSearchResultEmptyTableViewCell.h"
 
 @interface MSSearchResultTableView ()
 
@@ -17,6 +18,7 @@
 
 static NSString *kMSSearchResultTableViewRightCellIdentifier = @"kMSRightSearchResultTableViewIdentifier";
 static NSString *kMSSearchResultTableViewLeftCellIdentifier = @"kMSLeftSearchResultTableViewIdentifier";
+static NSString *kMSSearchResultTableViewEmptyCellIndentufuer = @"kMSSearchResultTableViewEmptyCellIndentufuer";
 
 @implementation MSSearchResultTableView
 {
@@ -33,6 +35,7 @@ static NSString *kMSSearchResultTableViewLeftCellIdentifier = @"kMSLeftSearchRes
         self.backgroundView = nil;
         self.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
         self.backgroundColor = [UIColor whiteColor];
+        self.isAllCells = YES;
     }
     return self;
 }
@@ -48,11 +51,35 @@ static NSString *kMSSearchResultTableViewLeftCellIdentifier = @"kMSLeftSearchRes
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if ( !self.isAllCells )
+        return [_cellArray count] + 1;
     return [_cellArray count];
+}
+
+- (void)insertCells:(NSArray<id<MSSearchResultCellViewModel>> *)cells
+{
+    [self beginUpdates];
+//    [self reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    __block NSInteger index = _cellArray.count;
+    [self insertRowsAtIndexPaths:[NSArray arrayWithBlock:^id{
+        return [NSIndexPath indexPathForRow:index++ inSection:0];
+    } count:cells.count] withRowAnimation:UITableViewRowAnimationFade];
+    _cellArray = [_cellArray arrayByAddingObjectsFromArray:cells];
+    [self endUpdates];
+    [self layoutSubviews];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ( indexPath.row >= _cellArray.count )
+    {
+        MSSearchResultEmptyTableViewCell *emptyCell = [tableView dequeueReusableCellWithIdentifier:kMSSearchResultTableViewEmptyCellIndentufuer forIndexPath:indexPath];
+        [emptyCell.spiner startAnimating];
+        if ( self.getMoreCells )
+            self.getMoreCells(self);
+        return emptyCell;
+    }
     UITableViewCell<MSSearchResultCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:indexPath.row%2? kMSSearchResultTableViewRightCellIdentifier : kMSSearchResultTableViewLeftCellIdentifier forIndexPath:indexPath];
     id<MSSearchResultCellViewModel> model = _cellArray[indexPath.row];
     [cell configureCellFromModel:model];

@@ -27,6 +27,17 @@
     {
         return [MSSerializationValueTransformer transformerForArraySerializedObjectsOfClass:[MSiTunesSearchResponceEntityContainer class]];
     }
-    return nil;}
+    return nil;
+}
+
+- (BOOL)isIncompleteResult
+{
+    return self.results.count != 50;
+}
+
+- (NSArray<id<MSSearchResultCellViewModel>> *)cellArray
+{
+    return self.results;
+}
 
 @end
