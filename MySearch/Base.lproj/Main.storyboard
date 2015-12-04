@@ -196,7 +196,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <action selector="textfieldAction:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="1k1-SY-PCp"/>
+                                            <action selector="textfieldAction:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="idS-E3-yzL"/>
+                                            <action selector="textfieldDidEnterKey:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="vDJ-uF-Jaj"/>
                                         </connections>
                                     </textField>
                                 </subviews>

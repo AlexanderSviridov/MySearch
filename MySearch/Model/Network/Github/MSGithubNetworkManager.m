@@ -35,9 +35,9 @@
 
 - (MSPromise<id<MSSearchResultContainerProtocol>> *)searchWithQuery:(NSString *)query
 {
-    self.query = query;
     if ( [self.query isEqualToString:query] && self.page == 0 && self.currentPromise )
         return self.currentPromise;
+    self.query = query;
     self.page = 0;
     return self.currentPromise = [self searchGithubRepositoryWithQuery:query page:0];
 }
