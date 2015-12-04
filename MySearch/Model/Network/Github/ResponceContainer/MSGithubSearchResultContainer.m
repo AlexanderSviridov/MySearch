@@ -24,7 +24,7 @@
 
 + (NSValueTransformer *)msSerializationTransformerForKey:(NSString *)key
 {
-    if ( [key isEqualToString:@"items"] )
+    if ( [@"items" isEqualToString:key] )
         return [MSSerializationValueTransformer transformerForArraySerializedObjectsOfClass:[MSGithubSearchResultEntryContainer class]];
     return nil;
 }

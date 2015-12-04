@@ -1,9 +1,9 @@
 //
 //  UIViewController+ShowModal.m
-//  AQUA Analytics
+//  MySearch
 //
 //  Created by Alexander Sviridov on 16/05/14.
-//  Copyright (c) 2014 OysterLabs. All rights reserved.
+//  Copyright © 2015 Alexander Sviridov. All rights reserved.
 //
 
 #import "UIViewController+ShowModal.h"

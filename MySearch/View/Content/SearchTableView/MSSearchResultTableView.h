@@ -22,7 +22,6 @@ static CGFloat kMSSearchResultTableViewCellHeight = 100.;
 @property (nonatomic) NSArray<id<MSSearchResultCellViewModel>> *cellArray;
 
 @property (copy) void(^imageButtonHavePressedWithModel)(id<MSSearchResultCellViewModel> model, id<MSSearchResultCellProtocol> cell);
-//@property (copy) void(^getMoreCells)(MSSearchResultTableView *);
 
 - (MSPromise<MSSearchResultTableView *> *)getMoreCells;
 

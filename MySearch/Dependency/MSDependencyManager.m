@@ -58,12 +58,4 @@
     }
 }
 
-- (id)getObjectFromProtocol:(Protocol *)protocol forObject:(id)object
-{
-    if ( [object isKindOfClass:[MSPreviewViewController class]] )
-    {
-    }
-    return nil;
-}
-
 @end

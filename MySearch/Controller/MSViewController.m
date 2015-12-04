@@ -18,6 +18,7 @@
 #import "MSSearchResultCellProtocol.h"
 #import "MSLoadingScreenView.h"
 #import "MSSearchResultContainerProtocol.h"
+#import "MSGlobalConstaints.h"
 
 static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSeque";
 
@@ -49,7 +50,7 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
     self.serviceName = self.networkManagers[0].name;
     __weak MSViewController *self_weak = self;
     [self.tableView setImageButtonHavePressedWithModel:^(id<MSSearchResultCellViewModel> model, id<MSSearchResultCellProtocol> cell) {
-        [self_weak.previewController showModalWithDuration:.3];
+        [self_weak.previewController showModalWithDuration:kMSDefaultAnimationDuration];
         self_weak.previewController.transferImageView = [cell unattachImageViewFromCell];
         [self_weak.previewController setCompleationHandler:^(MSPreviewViewController *previewController) {
             [cell attachImageView:previewController.transferImageView];
@@ -100,7 +101,7 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
         [self presentViewController:alert animated:YES completion:nil];
         return nil;
     }];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kMSDefaultAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ( !promise.isCompleated )
         {
             [self.loadingScreen startAnimationWithQuery:sender.text serviceName:self.serviceName];

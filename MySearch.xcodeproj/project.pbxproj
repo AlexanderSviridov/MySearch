@@ -72,6 +72,8 @@
 		B60240531C10941C00723AEE /* MSSearchResultContainerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchResultContainerProtocol.h; sourceTree = "<group>"; };
 		B60240541C10967200723AEE /* MSGithubSearchResultContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGithubSearchResultContainer.h; sourceTree = "<group>"; };
 		B60240551C10967200723AEE /* MSGithubSearchResultContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGithubSearchResultContainer.m; sourceTree = "<group>"; };
+		B62269481C10EAD200B5FE93 /* MSGlobalConstaints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSGlobalConstaints.h; sourceTree = "<group>"; };
+		B62269491C10EB2100B5FE93 /* MSErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSErrorCodes.h; sourceTree = "<group>"; };
 		B640C4A01C084B650042EFE6 /* MySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B640C4A41C084B650042EFE6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B640C4A61C084B650042EFE6 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		B640C4A21C084B650042EFE6 /* MySearch */ = {
 			isa = PBXGroup;
 			children = (
+				B64185A71C10E97600D51D97 /* Constaints */,
 				B6C7980C1C10523900047170 /* Dependency */,
 				B6CCA04C1C0DECBD00ABF80B /* Resourses */,
 				B640C4EA1C0863FD0042EFE6 /* Helpers */,
@@ -287,6 +290,15 @@
 				B640C4EC1C0864270042EFE6 /* NSArray+MSLinqExtension.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B64185A71C10E97600D51D97 /* Constaints */ = {
+			isa = PBXGroup;
+			children = (
+				B62269481C10EAD200B5FE93 /* MSGlobalConstaints.h */,
+				B62269491C10EB2100B5FE93 /* MSErrorCodes.h */,
+			);
+			path = Constaints;
 			sourceTree = "<group>";
 		};
 		B67A93BC1C0C4C88007E4560 /* ImageCaching */ = {
@@ -769,6 +781,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MySearchTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = myself.MySearchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -781,6 +794,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MySearchTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = myself.MySearchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -792,6 +806,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = MySearchUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = myself.MySearchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -804,6 +819,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = MySearchUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = myself.MySearchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

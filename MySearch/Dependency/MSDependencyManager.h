@@ -13,6 +13,5 @@
 + (instancetype)sharedManager;
 
 - (void)getDependenciesForObject:(id)object;
-- (id)getObjectFromProtocol:(Protocol*)protocol forObject:(id)object;
 
 @end

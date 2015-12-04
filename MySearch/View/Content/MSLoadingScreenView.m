@@ -8,13 +8,9 @@
 
 #import "MSLoadingScreenView.h"
 
-@implementation MSLoadingScreenView
+#import "MSGlobalConstaints.h"
 
-- (void)awakeFromNib
-{
-//    self.alertView.layer.borderColor = [UIColor whiteColor].CGColor;
-//    self.alertView.layer.borderWidth = 4;
-}
+@implementation MSLoadingScreenView
 
 - (void)startAnimationWithQuery:(NSString *)querty serviceName:(NSString *)service
 {
@@ -23,14 +19,14 @@
     self.queryLabel.text = [NSString stringWithFormat:@"query: %@", querty ];
     self.serviceLabel.text = service;
     [self.spinner startAnimating];
-    [UIView animateWithDuration:.3 animations:^{
+    [UIView animateWithDuration:kMSDefaultAnimationDuration animations:^{
         self.alpha = 1;
     }];
  }
 
 - (void)stopAnimating
 {
-    [UIView animateWithDuration:.3 animations:^{
+    [UIView animateWithDuration:kMSDefaultAnimationDuration animations:^{
         self.alpha = 0;
     } completion:^(BOOL finished) {
         self.hidden = YES;
