@@ -17,6 +17,7 @@ typedef void(^MSPromiseDisposable)();
 @interface MSPromise<__covariant ObjectType> : NSObject
 
 @property (readonly) BOOL isCompleated;
+@property (copy) NSString *debugName;
 
 + (instancetype)newPromise:(MSPromiseDisposable(^)(MSPromiseFullfillBlock,MSPromiseRejectBclock))block;
 + (instancetype)promiseWithValue:(id)value;
@@ -27,6 +28,8 @@ typedef void(^MSPromiseDisposable)();
 - (id)then:(MSPromise *(^)(ObjectType))thenBlock onQueue:(dispatch_queue_t)queue;
 
 - (id)catch:(MSPromise *(^)(NSError *))rejectErrorBlock;
+
+- (id)once;
 
 - (void)dispose;
 

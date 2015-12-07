@@ -29,7 +29,6 @@
 - (void)testCreation
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@""];
-    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
     MSPromise *newPromise = [MSPromise newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfill, MSPromiseRejectBclock reject) {
         fullfill(@2);
         return nil;
@@ -42,8 +41,6 @@
         [expectation fulfill];
         return nil;
     }];
-    
-        dispatch_semaphore_signal(sem);
     
     [self waitForExpectationsWithTimeout:2 handler:^(NSError * _Nullable error) {
         XCTAssertNil(error);

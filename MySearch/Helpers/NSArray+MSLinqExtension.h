@@ -12,6 +12,6 @@
 
 - (instancetype)linq_map:(id (^)(ObjectType))mappingBlock;
 
-+ (NSArray *)arrayWithBlock:(id(^)())block count:(NSInteger)count;
++ (NSArray *)arrayWithBlock:(id(^)(NSInteger))block count:(NSInteger)count;
 
 @end

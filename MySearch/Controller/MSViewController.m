@@ -77,28 +77,23 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
     // Dispose of any resources that can be recreated.
 }
 
-
 - (IBAction)textfieldDidEnterKey:(UITextField *)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__ );
     [sender resignFirstResponder];
 }
 
 - (IBAction)textfieldAction:(UITextField *)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__ );
     [sender resignFirstResponder];
-    MSPromise *promise = [[[self.currentNetworkManager searchWithQuery:sender.text] then:^MSPromise *(id<MSSearchResultContainerProtocol> result) {
+    MSPromise *promise = [[[[self.currentNetworkManager searchWithQuery:sender.text] once] then:^MSPromise *(id<MSSearchResultContainerProtocol> result) {
         if ( !result.cellArray.count )
         {
             self.tableView.isAllCells = YES;
             self.tableView.cellArray = @[];
+            return nil;
         }
-        else
-        {
-            self.tableView.isAllCells = result.isIncompleteResult;
-            self.tableView.cellArray = result.cellArray;
-        }
+        self.tableView.isAllCells = result.isIncompleteResult;
+        self.tableView.cellArray = result.cellArray;
         return nil;
     }] catch:^MSPromise *(NSError *error) {
         self.tableView.cellArray = @[];

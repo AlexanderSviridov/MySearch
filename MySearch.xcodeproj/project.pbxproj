@@ -45,6 +45,9 @@
 		B6D334931C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334921C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.m */; };
 		B6D334971C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334961C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m */; };
 		B6D3349A1C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D334991C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m */; };
+		B6F856A51C15A3ED006A5CE7 /* NSString+MSRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F856A41C15A3ED006A5CE7 /* NSString+MSRegex.m */; };
+		B6F856A81C15AD4D006A5CE7 /* MSPromiseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F856A71C15AD4D006A5CE7 /* MSPromiseManager.m */; };
+		B6F856AB1C15AD95006A5CE7 /* MSWeakSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F856AA1C15AD95006A5CE7 /* MSWeakSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +147,12 @@
 		B6D334961C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSiTunesSearchResponceContainer.m; sourceTree = "<group>"; };
 		B6D334981C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiTunesSearchResponceEntityContainer.h; sourceTree = "<group>"; };
 		B6D334991C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSiTunesSearchResponceEntityContainer.m; sourceTree = "<group>"; };
+		B6F856A31C15A3ED006A5CE7 /* NSString+MSRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MSRegex.h"; sourceTree = "<group>"; };
+		B6F856A41C15A3ED006A5CE7 /* NSString+MSRegex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MSRegex.m"; sourceTree = "<group>"; };
+		B6F856A61C15AD4D006A5CE7 /* MSPromiseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPromiseManager.h; sourceTree = "<group>"; };
+		B6F856A71C15AD4D006A5CE7 /* MSPromiseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPromiseManager.m; sourceTree = "<group>"; };
+		B6F856A91C15AD95006A5CE7 /* MSWeakSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakSet.h; sourceTree = "<group>"; };
+		B6F856AA1C15AD95006A5CE7 /* MSWeakSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,8 +295,12 @@
 			children = (
 				B6C7981A1C1069A300047170 /* UIViewController+ShowModal.h */,
 				B6C7981B1C1069A300047170 /* UIViewController+ShowModal.m */,
+				B6F856A31C15A3ED006A5CE7 /* NSString+MSRegex.h */,
+				B6F856A41C15A3ED006A5CE7 /* NSString+MSRegex.m */,
 				B640C4EB1C0864270042EFE6 /* NSArray+MSLinqExtension.h */,
 				B640C4EC1C0864270042EFE6 /* NSArray+MSLinqExtension.m */,
+				B6F856A91C15AD95006A5CE7 /* MSWeakSet.h */,
+				B6F856AA1C15AD95006A5CE7 /* MSWeakSet.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -315,6 +328,8 @@
 			children = (
 				B67A93CD1C0C9F58007E4560 /* MSPromise.h */,
 				B67A93CE1C0C9F58007E4560 /* MSPromise.m */,
+				B6F856A61C15AD4D006A5CE7 /* MSPromiseManager.h */,
+				B6F856A71C15AD4D006A5CE7 /* MSPromiseManager.m */,
 			);
 			path = Promises;
 			sourceTree = "<group>";
@@ -588,6 +603,7 @@
 				B6D334661C0EE3AE002F3EF3 /* MSiTunesNetworkManager.m in Sources */,
 				B6D334971C0F2B88002F3EF3 /* MSiTunesSearchResponceContainer.m in Sources */,
 				B6D334931C0F22CF002F3EF3 /* MSiTunesAppSearchRequestContainer.m in Sources */,
+				B6F856A81C15AD4D006A5CE7 /* MSPromiseManager.m in Sources */,
 				B640C4ED1C0864270042EFE6 /* NSArray+MSLinqExtension.m in Sources */,
 				B67A93BF1C0C4CA3007E4560 /* MSImageCacheManager.m in Sources */,
 				B67A93CF1C0C9F58007E4560 /* MSPromise.m in Sources */,
@@ -599,11 +615,13 @@
 				B6D3348F1C0F1790002F3EF3 /* MSNetworkManager.m in Sources */,
 				B6D3348B1C0F062F002F3EF3 /* MSGithubOwnerContainer.m in Sources */,
 				B6C7980F1C10524900047170 /* MSDependencyManager.m in Sources */,
+				B6F856A51C15A3ED006A5CE7 /* NSString+MSRegex.m in Sources */,
 				B640C4E61C085E460042EFE6 /* MSSerializationManager.m in Sources */,
 				B6D334851C0EFDBD002F3EF3 /* MSEdgeContainerView.m in Sources */,
 				B6D334551C0EE0F7002F3EF3 /* MSErrorView.m in Sources */,
 				B640C4A51C084B650042EFE6 /* main.m in Sources */,
 				B6C798041C1047B600047170 /* MSPreviewViewController.m in Sources */,
+				B6F856AB1C15AD95006A5CE7 /* MSWeakSet.m in Sources */,
 				B6D3348C1C0F062F002F3EF3 /* MSGithubSearchResultEntryContainer.m in Sources */,
 				B6D334801C0EF45B002F3EF3 /* MSSearchResultTableViewCell.m in Sources */,
 				B6D3349A1C0F301A002F3EF3 /* MSiTunesSearchResponceEntityContainer.m in Sources */,

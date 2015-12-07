@@ -44,7 +44,7 @@
     _spinner.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
     _imageView = [[UIImageView alloc] init];
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
-    _errorView = [MSErrorView new];
+    _errorView = [[MSErrorView alloc] init];
 }
 
 - (void)setImageURL:(NSURL *)imageURL
@@ -58,10 +58,7 @@
     [self addSubview:_spinner];
     [_spinner startAnimating];
     __weak MSWebImageView *self_weak = self;
-    _loadImagePromise = [[[MSImageCacheManager.sharedManager loadCachedImageFromURL:
-//                           [NSURL URLWithString:@"http://www.google.com"]
-                           imageURL
-                           ] then:^MSPromise *(MSImageCacheLoadImageContainer *container) {
+    _loadImagePromise = [[[MSImageCacheManager.sharedManager loadCachedImageFromURL:imageURL] then:^MSPromise *(MSImageCacheLoadImageContainer *container) {
         if ( ![self_weak.imageURL isEqual:imageURL] )
             return nil;
         if ( MSImageCacheManagerLoadedFromCache == container.loadedFrom )
@@ -76,9 +73,9 @@
         [UIView transitionFromView:_spinner toView:_imageView duration:.3 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut completion:nil];
         return nil;
     }] catch:^MSPromise *(NSError *error) {
-        NSLog(@"%@", error );
         [UIView transitionFromView:_spinner toView:_errorView duration:.3 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut completion:nil];
         return nil;
+        
     }];
 }
 

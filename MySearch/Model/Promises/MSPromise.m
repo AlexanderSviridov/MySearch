@@ -9,6 +9,8 @@
 #import "MSPromise.h"
 
 #import "NSArray+MSLinqExtension.h"
+#import "NSString+MSRegex.h"
+#import "MSPromiseManager.h"
 
 @interface MSPromiseListengerContainer : NSObject
 
@@ -47,6 +49,7 @@
     if ( self )
     {
         _listengers = [NSMutableArray new];
+        [MSPromiseManager.sharedManager addPromiseToObserve:self];
     }
     return self;
 }
@@ -54,6 +57,7 @@
 + (instancetype)newPromise:(MSPromiseDisposable (^)(MSPromiseFullfillBlock, MSPromiseRejectBclock))block
 {
     MSPromise *resultPromise = [MSPromise new];
+    resultPromise.debugName = [self callStackName:0];
     resultPromise.disposableBlock = block(^(id fullfil){
         [resultPromise onValue:fullfil error:nil];
     }, ^(NSError *reject){
@@ -63,22 +67,31 @@
     return resultPromise;
 }
 
++ (NSString *)callStackName:(NSInteger)stackIndex
+{
+    return [(NSString *)[NSThread callStackSymbols][stackIndex + 2] stringByRemovingRegex:@".+0x[0-9a-f]+\\s"];
+}
+
 + (instancetype)promiseWithValue:(id)value
 {
-    return [self newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfil, MSPromiseRejectBclock reject) {
+    MSPromise *promise = [self newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfil, MSPromiseRejectBclock reject) {
         fullfil( value );
         return ^{
         };
     }];
+    promise.debugName = [NSString stringWithFormat:@"%@ Value[%@]:%@", [self callStackName:0], NSStringFromClass([value class]), value];
+    return promise;
 }
 
 + (instancetype)promiseWithError:(NSError *)error
 {
-    return [self newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfil, MSPromiseRejectBclock reject) {
+    MSPromise *promise = [self newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fullfil, MSPromiseRejectBclock reject) {
         reject(error);
         return ^{
         };
     }];
+    promise.debugName = [NSString stringWithFormat:@"%@ Error[%@]:%@", [self callStackName:0], NSStringFromClass([error class]), error];
+    return promise;
 }
 
 - (id)then:(MSPromise *(^)(id))thenBlock
@@ -94,6 +107,7 @@
 - (id)then:(MSPromise *(^)(id))thenBlock onQueue:(dispatch_queue_t)queue
 {
     MSPromise *newPromise = [MSPromise new];
+    newPromise.debugName = [self.debugName stringByAppendingFormat:@"then%@ ", [MSPromise callStackName:1] ];
     [self addListengerWithPromise:newPromise onCompleation:^(id next, NSError *error, MSPromise *owner) {
         if ( !error )
         {
@@ -102,9 +116,12 @@
                 if ( !nextPromise )
                     [owner onValue:next error:nil];
                 else if ( [nextPromise isKindOfClass:[MSPromise class]] )
-                    [nextPromise addListengerWithPromise:newPromise onCompleation:^(id next, NSError *error, MSPromise *owner) {
+                {
+                    owner.debugName = [owner.debugName stringByAppendingFormat:@"(promise:%@)", nextPromise.debugName ];
+                    [nextPromise addListengerWithPromise:owner onCompleation:^(id next, NSError *error, MSPromise *owner) {
                         [owner onValue:next error:error];
                     }];
+                }
                 else if ( [nextPromise isKindOfClass:[NSError class]] )
                     [owner onValue:nil error:(NSError *)nextPromise];
                 else
@@ -121,17 +138,21 @@
 - (id)catch:(MSPromise *(^)(NSError *))rejectErrorBlock
 {
     MSPromise *newPromise = [MSPromise new];
+    newPromise.debugName = [self.debugName stringByAppendingFormat:@"catch%@ ", [MSPromise callStackName:1] ];
     [self addListengerWithPromise:newPromise onCompleation:^(id next, NSError *error, MSPromise *owner) {
         if ( error )
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 MSPromise *nextPromise = rejectErrorBlock(error);
-                if ( !newPromise )
+                if ( !nextPromise )
                     [owner onValue:nil error:error];
                 else if ( [nextPromise isKindOfClass:[MSPromise class]] )
+                {
+                    owner.debugName = [owner.debugName stringByAppendingFormat:@"(promise%@)", nextPromise.debugName ];
                     [nextPromise addListengerWithPromise:owner onCompleation:^(id next, NSError *error, MSPromise *owner) {
                         [owner onValue:next error:error];
                     }];
+                }
                 else if ( [nextPromise isKindOfClass:[NSError class]] )
                     [owner onValue:nil error:(NSError *)nextPromise];
                 else
@@ -144,11 +165,30 @@
     return newPromise;
 }
 
+- (id)once
+{
+    if ( self.isCompleated )
+        return self.compleatedError ? [MSPromise promiseWithError:self.compleatedError] : [MSPromise promiseWithValue:self.compleatedValue];
+    
+    return [MSPromise newPromise:^MSPromiseDisposable(MSPromiseFullfillBlock fulfil, MSPromiseRejectBclock reject) {
+        __weak MSPromise *promise = [[self then:^MSPromise *(id result) {
+            fulfil( result );
+            return nil;
+        }] catch:^MSPromise *(NSError *error) {
+            reject( error );
+            return nil;
+        }];
+        return ^{
+            if ( promise ) [promise dispose];
+        };
+    }];
+}
+
 - (void)dispose
 {
     @synchronized(self) {
-        if ( self.isCompleated )
-            return;
+//        if ( self.isCompleated )
+//            return;
         if ( self.prevPromise )
             [self.prevPromise removeListenerWithPromise:self];
         if ( self.disposableBlock )
@@ -158,10 +198,23 @@
 
 #pragma mark - private
 
+- (void)cleanInvalidListengers
+{
+    self.listengers = [self.listengers linq_map:^id(MSPromiseListengerContainer *container) {
+        if ( !container.promise )
+        {
+            container.onCompleate = nil;
+            return nil;
+        }
+        return container;
+    }];
+}
+
 - (void)addListengerWithPromise:(MSPromise *)promise onCompleation:(void(^)(id, NSError *, MSPromise *))compleationBlock
 {
     @synchronized( self )
     {
+        if ( promise.prevPromise ) [promise.prevPromise removeListenerWithPromise:self];
         promise.prevPromise = self;
         if ( self.isCompleated )
             compleationBlock(self.compleatedValue, self.compleatedError, promise);
@@ -173,6 +226,7 @@
 {
     @synchronized( self )
     {
+        [self cleanInvalidListengers];
         self.listengers = [self.listengers linq_map:^id(MSPromiseListengerContainer *object) {
             return ( object.promise == promise ) ? nil : object;
         }];
@@ -186,12 +240,23 @@
     _isCompleated = YES;
     self.compleatedError = error;
     self.compleatedValue = prevValue;
+    [self cleanInvalidListengers];
+    self.debugName = [self.debugName stringByAppendingFormat:@"(%s:[%@])", error? "error": prevValue ? "value" : "nil", NSStringFromClass(error?[error class]: [prevValue class]) ];
     [self.listengers enumerateObjectsUsingBlock:^(MSPromiseListengerContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ( error )
             obj.onCompleate(nil, error, obj.promise );
         if ( prevValue )
             obj.onCompleate(prevValue,nil, obj.promise );
     }];
+}
+
+- (void)dealloc
+{
+//    if ( [@"tag" isEqualToString:self.debugName] )
+//        NSLog(@"");
+//    NSLog(@"%s %@", __PRETTY_FUNCTION__, self.debugName );
+    if ( self.prevPromise )
+        [self.prevPromise removeListenerWithPromise:self];
 }
 
 @end

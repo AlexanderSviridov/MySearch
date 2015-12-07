@@ -26,7 +26,7 @@
     return [NSArray arrayWithArray:arr];
 }
 
-+ (NSArray *)arrayWithBlock:(id (^)())block count:(NSInteger)count
++ (NSArray *)arrayWithBlock:(id (^)(NSInteger))block count:(NSInteger)count
 {
     if ( count < 0 )
         return nil;
