@@ -35,8 +35,7 @@
 - (instancetype)init
 {
     self = [super init];
-    if ( self )
-    {
+    if ( self ) {
         _array = [NSMutableArray new];
     }
     return self;

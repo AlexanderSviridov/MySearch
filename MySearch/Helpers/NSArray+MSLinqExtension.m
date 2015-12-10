@@ -15,8 +15,7 @@
     if ( !mappingBlock )
         return nil;
     NSMutableArray *arr = [NSMutableArray new];
-    for ( id item in self )
-    {
+    for ( id item in self ) {
         id newItem = mappingBlock(item);
         if ( newItem )
             [arr addObject:newItem];
@@ -33,11 +32,9 @@
     if ( !block )
         return nil;
     NSMutableArray *arr = [NSMutableArray new];
-    for ( NSInteger i = 0; i < count; ++i )
-    {
+    for ( NSInteger i = 0; i < count; ++i ) {
         id item = block( i );
-        if ( item )
-        {
+        if ( item ) {
             [arr addObject:item];
         }
     }

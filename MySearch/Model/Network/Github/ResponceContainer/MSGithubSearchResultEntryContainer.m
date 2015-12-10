@@ -93,9 +93,7 @@
 + (NSValueTransformer *)msSerializationTransformerForKey:(NSString *)key
 {
     if ( [@"owner" isEqualToString:key] )
-    {
         return [MSSerializationValueTransformer transformerForSerializedObjecOfClass:[MSGithubOwnerContainer class]];
-    }
     return nil;
 }
 

@@ -29,16 +29,14 @@
 	[self didMoveToParentViewController:mainViewController];
 	
 	__weak typeof(self)_self = self;
-	if ( duration )
-	{
+	if ( duration ) {
 		[UIView animateWithDuration:duration animations:^{
 			_self.view.alpha = 1;
 		} completion:^(BOOL finished) {
             [_self viewDidAppear:YES];
         }];
 	}
-	else
-	{
+	else {
 		self.view.alpha = 1;
         [_self viewDidAppear:NO];
 	}
@@ -53,8 +51,7 @@
 {
 	__weak typeof(self)_self = self;
 	void (^_compleationBlock)() = compleationBlock ? [compleationBlock copy] : nil;
-	if ( duration )
-	{
+	if ( duration ) {
 		[UIView animateWithDuration:duration animations:^{
 			_self.view.alpha = 0;
 		} completion:^(BOOL finished) {
@@ -64,9 +61,7 @@
 			_self.view.alpha = 1;
 			[_self didMoveToParentViewController:nil];
 			if ( _compleationBlock )
-			{
 				_compleationBlock();
-			}
 		}];
 		return;
 	}

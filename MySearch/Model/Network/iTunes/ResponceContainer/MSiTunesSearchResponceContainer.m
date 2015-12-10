@@ -24,9 +24,7 @@
 + (NSValueTransformer *)msSerializationTransformerForKey:(NSString *)key
 {
     if ( [@"results" isEqualToString:key] )
-    {
         return [MSSerializationValueTransformer transformerForArraySerializedObjectsOfClass:[MSiTunesSearchResponceEntityContainer class]];
-    }
     return nil;
 }
 

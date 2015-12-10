@@ -36,8 +36,7 @@
 - (instancetype)init
 {
     self = [super init];
-    if ( self )
-    {
+    if ( self ) {
         _githubManager = [MSGithubNetworkManager new];
         _iTunesManager = [MSiTunesNetworkManager new];
         _previewController = [MSPreviewViewController new];
@@ -47,8 +46,7 @@
 
 - (void)getDependenciesForObject:(id)object
 {
-    if ( [object isKindOfClass:[MSViewController class]] )
-    {
+    if ( [object isKindOfClass:[MSViewController class]] ) {
         MSViewController *vc = object;
         vc.networkManagers = @[
             [MSViewControllerManagerContainer networkManagerWithManager:_githubManager name:@"Github"],

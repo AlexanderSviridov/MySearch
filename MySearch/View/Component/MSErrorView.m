@@ -26,9 +26,8 @@
 - (instancetype)init
 {
     self = [super init];
-    if ( self )
-    {
-        self.layer.backgroundColor = [UIColor colorWithHue:0 saturation:0.6 brightness:1 alpha:1].CGColor;
+    if ( self ) {
+        self.layer.backgroundColor = [UIColor colorWithHue:0 saturation:0.8 brightness:1 alpha:1].CGColor;
         _imageView = [UIView new];
         _imageView.layer.contents = (id)MSErrorView.errorViewImage.CGImage;
         _imageView.contentMode = UIViewContentModeScaleAspectFill;

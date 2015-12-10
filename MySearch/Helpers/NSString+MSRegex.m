@@ -13,9 +13,7 @@
 - (instancetype)stringByRemovingRegex:(NSString *)regex
 {
     __autoreleasing NSError *error = nil;
-    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:regex
-                                                                           options:NSRegularExpressionCaseInsensitive
-                                                                             error:&error];
+    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:regex options:NSRegularExpressionCaseInsensitive error:&error];
     NSRange rangeOfFirstMatch = [regularExpression rangeOfFirstMatchInString:self options:0 range:NSMakeRange(0, [self length])];
     NSString *regexOccurentString = [self substringWithRange:rangeOfFirstMatch];
     return [self stringByReplacingOccurrencesOfString:regexOccurentString withString:@""];

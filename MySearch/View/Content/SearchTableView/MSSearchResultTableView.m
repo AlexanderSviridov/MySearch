@@ -82,8 +82,7 @@ static NSString *kMSSearchResultTableViewEmptyCellIndentufuer = @"kMSSearchResul
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ( indexPath.row >= _cellArray.count )
-    {
+    if ( indexPath.row >= _cellArray.count ) {
         MSSearchResultEmptyTableViewCell *emptyCell = [tableView dequeueReusableCellWithIdentifier:kMSSearchResultTableViewEmptyCellIndentufuer forIndexPath:indexPath];
         [emptyCell.spiner startAnimating];
         if ( _getMoreCellsBlock )

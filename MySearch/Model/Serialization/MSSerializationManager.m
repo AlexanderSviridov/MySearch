@@ -15,8 +15,7 @@
 {
     NSDictionary<NSString *, NSString *> *mappingDict = [contrainerClass msSerializationMapping];
     id result = [(Class)contrainerClass new];
-    for ( NSString *mappingKey in mappingDict )
-    {
+    for ( NSString *mappingKey in mappingDict ) {
         NSString *representationKey = mappingDict[mappingKey];
         id representationValue = representation[representationKey];
         NSValueTransformer *transformer = [contrainerClass msSerializationTransformerForKey:mappingKey];
@@ -47,12 +46,10 @@
             return [self serializeObjectIntoRepresentationFromObject:oldValue];
         }];
     
-    if ( [(Class)objClass respondsToSelector:@selector(msSerializationMapping)] && [(Class)objClass respondsToSelector:@selector(msSerializationTransformerForKey:)] )
-    {
+    if ( [(Class)objClass respondsToSelector:@selector(msSerializationMapping)] && [(Class)objClass respondsToSelector:@selector(msSerializationTransformerForKey:)] ) {
         NSDictionary<NSString *, NSString *> *mapping = [objClass msSerializationMapping];
         NSMutableDictionary *resultDictionary = [NSMutableDictionary new];
-        for ( NSString *key in mapping.allKeys )
-        {
+        for ( NSString *key in mapping.allKeys ) {
             NSString *value = mapping[key];
             id objectValue = [object valueForKey:key];
             NSValueTransformer *transformer = [objClass msSerializationTransformerForKey:key];

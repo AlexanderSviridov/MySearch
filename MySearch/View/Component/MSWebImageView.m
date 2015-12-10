@@ -22,8 +22,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    if ( self )
-    {
+    if ( self ) {
         [self loadViews];
     }
     return self;
@@ -61,8 +60,7 @@
     _loadImagePromise = [[[MSImageCacheManager.sharedManager loadCachedImageFromURL:imageURL] then:^MSPromise *(MSImageCacheLoadImageContainer *container) {
         if ( ![self_weak.imageURL isEqual:imageURL] )
             return nil;
-        if ( MSImageCacheManagerLoadedFromCache == container.loadedFrom )
-        {
+        if ( MSImageCacheManagerLoadedFromCache == container.loadedFrom ) {
             [weakself addSubview:_imageView];
             _imageView.image = container.image;
             [_spinner stopAnimating];

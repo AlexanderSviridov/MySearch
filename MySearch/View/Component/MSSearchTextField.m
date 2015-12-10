@@ -34,8 +34,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecode
 {
     self = [super initWithCoder:aDecode];
-    if ( self )
-    {
+    if ( self ) {
         MSEdgeContainerView *leftImageView = [MSEdgeContainerView containerViewWithView:({
             UIView *imageView = [UIView new];
             imageView.layer.contents = (id)MSSearchTextField.searchImage.CGImage;

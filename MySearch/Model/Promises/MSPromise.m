@@ -109,14 +109,12 @@
     MSPromise *newPromise = [MSPromise new];
     newPromise.debugName = [self.debugName stringByAppendingFormat:@"then%@ ", [MSPromise callStackName:1] ];
     [self addListengerWithPromise:newPromise onCompleation:^(id next, NSError *error, MSPromise *owner) {
-        if ( !error )
-        {
+        if ( !error ) {
             dispatch_async(queue, ^{
                 MSPromise *nextPromise = thenBlock(next);
                 if ( !nextPromise )
                     [owner onValue:next error:nil];
-                else if ( [nextPromise isKindOfClass:[MSPromise class]] )
-                {
+                else if ( [nextPromise isKindOfClass:[MSPromise class]] ) {
                     owner.debugName = [owner.debugName stringByAppendingFormat:@"(promise:%@)", nextPromise.debugName ];
                     [nextPromise addListengerWithPromise:owner onCompleation:^(id next, NSError *error, MSPromise *owner) {
                         [owner onValue:next error:error];
@@ -140,14 +138,12 @@
     MSPromise *newPromise = [MSPromise new];
     newPromise.debugName = [self.debugName stringByAppendingFormat:@"catch%@ ", [MSPromise callStackName:1] ];
     [self addListengerWithPromise:newPromise onCompleation:^(id next, NSError *error, MSPromise *owner) {
-        if ( error )
-        {
+        if ( error ) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 MSPromise *nextPromise = rejectErrorBlock(error);
                 if ( !nextPromise )
                     [owner onValue:nil error:error];
-                else if ( [nextPromise isKindOfClass:[MSPromise class]] )
-                {
+                else if ( [nextPromise isKindOfClass:[MSPromise class]] ) {
                     owner.debugName = [owner.debugName stringByAppendingFormat:@"(promise%@)", nextPromise.debugName ];
                     [nextPromise addListengerWithPromise:owner onCompleation:^(id next, NSError *error, MSPromise *owner) {
                         [owner onValue:next error:error];
@@ -212,8 +208,7 @@
 
 - (void)addListengerWithPromise:(MSPromise *)promise onCompleation:(void(^)(id, NSError *, MSPromise *))compleationBlock
 {
-    @synchronized( self )
-    {
+    @synchronized( self ) {
         if ( promise.prevPromise ) [promise.prevPromise removeListenerWithPromise:self];
         promise.prevPromise = self;
         if ( self.isCompleated )
@@ -224,8 +219,7 @@
 
 - (void)removeListenerWithPromise:(MSPromise *)promise
 {
-    @synchronized( self )
-    {
+    @synchronized( self ) {
         [self cleanInvalidListengers];
         self.listengers = [self.listengers linq_map:^id(MSPromiseListengerContainer *object) {
             return ( object.promise == promise ) ? nil : object;

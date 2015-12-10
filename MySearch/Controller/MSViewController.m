@@ -34,6 +34,9 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
 @end
 
 @implementation MSViewController
+{
+    id _obs;
+}
 
 - (void)viewDidLoad
 {
@@ -86,8 +89,7 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
 {
     [sender resignFirstResponder];
     MSPromise *promise = [[[[self.currentNetworkManager searchWithQuery:sender.text] once] then:^MSPromise *(id<MSSearchResultContainerProtocol> result) {
-        if ( !result.cellArray.count )
-        {
+        if ( !result.cellArray.count ) {
             self.tableView.isAllCells = YES;
             self.tableView.cellArray = @[];
             return nil;
