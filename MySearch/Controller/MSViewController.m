@@ -34,9 +34,6 @@ static NSString *kMSViewControllerShowModalSeque = @"MSViewControllerShowModalSe
 @end
 
 @implementation MSViewController
-{
-    id _obs;
-}
 
 - (void)viewDidLoad
 {
