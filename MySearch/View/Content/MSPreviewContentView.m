@@ -21,7 +21,6 @@
     self = [super init];
     if ( self )
     {
-//        self.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
         _contentButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:_contentButton];
     }

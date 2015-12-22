@@ -51,6 +51,21 @@ static NSString *kMSSearchResultTableViewEmptyCellIndentufuer = @"kMSSearchResul
     [self endUpdates];
 }
 
+
+- (void)setIsAllCells:(BOOL)isAllCells
+{
+    if ( _isAllCells == isAllCells )
+        return;
+    
+    _isAllCells = isAllCells;
+    NSIndexPath *loadCellIndexPath = [NSIndexPath indexPathForRow:_cellArray.count inSection:0];
+    
+    if ( _isAllCells )
+        [self deleteRowsAtIndexPaths:@[loadCellIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    else if ( [self numberOfRowsInSection:0] )
+        [self insertRowsAtIndexPaths:@[loadCellIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ( !self.isAllCells )
@@ -61,10 +76,11 @@ static NSString *kMSSearchResultTableViewEmptyCellIndentufuer = @"kMSSearchResul
 - (void)insertCells:(NSArray<id<MSSearchResultCellViewModel>> *)cells
 {
     [self beginUpdates];
-    [self insertRowsAtIndexPaths:[NSArray arrayWithBlock:^id(NSInteger idx) {
-        return [NSIndexPath indexPathForRow:_cellArray.count + idx inSection:0];
-    } count:cells.count] withRowAnimation:UITableViewRowAnimationFade];
+    NSInteger oldCount = _cellArray.count;
     _cellArray = [_cellArray arrayByAddingObjectsFromArray:cells];
+    [self insertRowsAtIndexPaths:[NSArray arrayWithBlock:^id(NSInteger idx) {
+        return [NSIndexPath indexPathForRow:oldCount + idx inSection:0];
+    } count:cells.count] withRowAnimation:UITableViewRowAnimationFade];
     [self endUpdates];
 }
 

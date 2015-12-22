@@ -17,7 +17,7 @@ static CGFloat kMSSearchResultTableViewCellHeight = 100.;
 
 @interface MSSearchResultTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
-@property BOOL isAllCells;
+@property (nonatomic) BOOL isAllCells;
 
 @property (nonatomic) NSArray<id<MSSearchResultCellViewModel>> *cellArray;
 

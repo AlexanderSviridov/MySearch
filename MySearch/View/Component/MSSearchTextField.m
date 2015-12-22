@@ -66,7 +66,6 @@
     return UIEdgeInsetsInsetRect(bounds, kMSTextFieldTextInsets );
 }
 
-//- (CGRect)clearButtonRectForBounds:(CGRect)bounds;
 - (CGRect)leftViewRectForBounds:(CGRect)bounds
 {
     return (CGRect){
@@ -75,6 +74,5 @@
         .size.height = bounds.size.height
     };
 }
-//- (CGRect)rightViewRectForBounds:(CGRect)bounds;
 
 @end

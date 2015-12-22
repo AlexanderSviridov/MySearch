@@ -183,8 +183,6 @@
 - (void)dispose
 {
     @synchronized(self) {
-//        if ( self.isCompleated )
-//            return;
         if ( self.prevPromise )
             [self.prevPromise removeListenerWithPromise:self];
         if ( self.disposableBlock )
@@ -246,9 +244,6 @@
 
 - (void)dealloc
 {
-//    if ( [@"tag" isEqualToString:self.debugName] )
-//        NSLog(@"");
-//    NSLog(@"%s %@", __PRETTY_FUNCTION__, self.debugName );
     if ( self.prevPromise )
         [self.prevPromise removeListenerWithPromise:self];
 }
